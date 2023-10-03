@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
+	
+	<title>Engineering Projects - Cristian Guzman</title>
+
+	<link rel="shortcut icon" href="assets/images/main/assys-logo.png">
+	
+	<!-- Bootstrap -->
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
+	<!-- Icon font -->
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<!-- Fonts -->
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700">
+	<!-- Custom styles -->
+	<link rel="stylesheet" href="assets/css/styles.css">
+
+	<!--[if lt IE 9]> <script src="assets/js/html5shiv.js"></script> <![endif]-->
+</head>
+
+
+<body>
+
+<header id="header">
+	<div id="head">
+		<h1 id="logo" class="text-center">
+			<span class="title">Engineering Projects</span>
+		</h1>
+	</div>
+
+	<nav class="navbar navbar-default navbar-sticky">
+		<div class="container-fluid">
+			
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+			    </button>
+			</div>
+			
+			<div class="navbar-collapse collapse">
+				
+				<ul class="nav navbar-nav">
+					<li><a href="index.html">Home</a></li>
+					<li  class="active"><a href="engineering-projects.html">Engineering Projects</a></li>
+					<li><a href="arts-crafts.html">Arts & Crafts</a></li>
+					<li><a href="about.html">About</a></li>
+				</ul>
+			
+			</div><!--/.nav-collapse -->			
+		</div>	
+	</nav>
+</header>
+
+<main id="main">
+
+	<div class="container">
+		
+		<div class="row topspace">
+			<div class="col-sm-8 col-sm-offset-2">
+															
+ 				<article class="post">
+					<header class="entry-header">
+						<h2 class="entry-title">Keyless Motorcycle Ignition System</h2>
+ 						<div class="entry-meta"> 
+ 							<span class="posted-on"><time class="entry-date published" date="2013-06-17">December 18, 2021</time></span>			
+ 						</div> 
+					</header> 
+					<div class="entry-content"> 
+						<p><img alt="" src="assets/images/keylesss-ignition/keyless-ignition-thumbnail-2.JPG" class="center"></p>
+
+						<p style="text-align: justify; font-size:120%;">
+							This system is truly a game-changer if you ride a motorcycle. Essentially, this device allows you to replace your physical keys, enabling you to start your bike wirelessly using a tag. In my case, I embedded the tag in a ring, which simplifies things even further. I've uploaded a video (see below) where I explain the working principles of the system in more detail. You can find the files on <a href="https://github.com/Cristian-Ariel/keyless-motorcycle-igntion-with-a-ring-nfc" target="_blank">GitHub</a> and the link to <a href="https://drive.google.com/file/d/1D22VbdVqOc0YWlI75PouFQuNAUfmh6G7/view" target="_blank">the complete documentation here</a>.
+						</p>
+						
+							<div style="text-align: center;">
+								<iframe width="560" height="315" src="https://www.youtube.com/embed/Ip3jwV7dnoM?si=46JgEYyMp8IGZvXj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+							</div>
+
+						<p style="text-align: justify; font-size:120%;">
+							Don't forget check out the <a href="ep-nfc-light-rings.html">follow-up to this project</a> which is all about making the rings. This project involves several steps, so please watch the videos and read the documentation. With that said, here's a quick overview of the project:
+						</p>
+
+						<p><img alt="" src="assets/images/keylesss-ignition/keyless-ignition-3.jpg" class="center"></p>
+
+						<p style="text-align: justify; font-size:120%;">
+							As you can see in the diagram above, the system consists of the main board, housing the ATmega328P microcontroller and other components for interaction with the rest of the system. Next, we have the light scanner board, which contains a simple circuit to control a light bar, providing users with visual cues about the system's status. Additionally, there are two reed switches and a relay to bypass the ignition circuit. Below, you can observe how the system was installed on my motorcycle
+						</p>
+
+						<p><img alt="" src="assets/images/keylesss-ignition/keyless-ignition-2.jpg" class="center"></p>
+
+						<p style="text-align: justify; font-size:120%;">
+							As I mentioned earlier, the core of the entire system is the ATmega328P microcontroller, and the board was designed with a focus on reducing electrical noise and ensuring reliability under automotive conditions. This includes resilience to factors like load dumps and high temperatures.
+					   </p>	
+
+					   <p><img alt="" src="assets/images/keylesss-ignition/keyless-ignition-4.jpg" class="center"></p>
+
+					   <p style="text-align: justify; font-size:120%;">
+							The same design process was applied to the light scanner board, and it proved to be very reliable. However, to be honest, it is not critical for the proper functioning of the system; it serves purely for visualization purposes. As depicted below, I installed it on my speedometer, and it indeed adds a nice touch to the motorcycle.
+				   		</p>	
+
+					   <p><img alt="" src="assets/images/keylesss-ignition/keyless-ignition-5.jpg" class="center"></p>
+					   <p><img alt="" src="assets/images/keylesss-ignition/keyless-ignition-6.gif" class="center"></p>
+
+					   <p style="text-align: justify; font-size:120%;">
+							Finally, to house the system, I designed the enclosures using Fusion360 and then 3D printed them. The system operated successfully on my bike for several months. However, I had to sell my bike along with the system back in 2022. I can attest that the system proved to be highly reliable. If you have any questions, please feel free to post a comment on the videos.
+				   		</p>
+
+					   <p><img alt="" src="assets/images/keylesss-ignition/keyless-ignition-7.jpg" class="center"></p>
+					   <p><img alt="" src="assets/images/keylesss-ignition/keyless-ignition-9.jpg" class="center"></p>
+
+					</div> 
+				</article><!-- #post-## -->
+
+			</div> 
+		</div> <!-- /row post  -->
+
+	</div>	<!-- /container -->
+
+</main>
+
+<footer id="footer" class="topspace">
+	<div class="container">
+		<div class="row">
+			
+			<div class="col-md-3 widget">
+				<h3 class="widget-title">Contact</h3>
+				<div class="widget-body">
+						<a href="mailto:cristian.guzman@my.gavilan.edu">cristian.guzman@my.gavilan.edu</a><br>
+				</div>
+			</div>
+
+			<div class="col-md-3 widget">
+				<h3 class="widget-title">Follow me</h3>
+				<div class="widget-body">
+					<p class="follow-me-icons"> <!-- More icons: https://fontawesome.com/v4/icons/-->
+						<a href="https://www.youtube.com/@Asyss_Complex"><i class="fa fa-youtube fa-2"></i></a>
+						<a href="https://www.linkedin.com/in/cristian-guzman-740278176/"><i class="fa fa-linkedin fa-2"></i></a>
+						<a href="https://github.com/Cristian-Ariel"><i class="fa fa-github fa-2"></i></a>
+						<a href="https://twitter.com/Cristi4n_Ariel"><i class="fa fa-twitter fa-2"></i></a>
+					</p>
+				</div>
+			</div>
+
+			<div class="col-md-6 widget"> <!--Change # after md to change column width -->
+				<div class="widget-body">
+					<p><em>
+						"We are at the mercy of whoever wields authority over the things we either desire or detest. If you would be free, then, do not wish to have, or avoid, things that other people control, because then you must serve as their slave."
+					    </em><br>
+					    — Epictetus <br><br>
+						Copyright &copy; 2023, Cristian Guzman<br> 
+					</p>	
+				</div>
+			</div>
+
+		</div> <!-- /row of widgets -->
+	</div>
+</footer>
+
+
+
+<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="assets/js/template.js"></script>
+</body>
+</html>
