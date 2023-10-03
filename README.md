@@ -23,10 +23,3 @@ Credits
 -------
 * Design and development: **Sergey Pozhilov** - http://pozhilov.com
 * More free templates by Sergey: http://gettemplate.com
-
-Photos used in the template
--------
-* http://www.publicdomainpictures.net/view-image.php?image=19999
-* http://www.publicdomainpictures.net/view-image.php?image=6354
-* http://imcreator.com/free/business/macbook-computer
-* http://unsplush.com
