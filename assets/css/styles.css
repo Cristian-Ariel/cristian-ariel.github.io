@@ -240,13 +240,11 @@ a:hover { /*Color when hovering links*/
 }
 /*********************************************************************
 
-
                                 HEADER
 
-assets/images/main/arts-crafts-banner.JPG
 **********************************************************************/
 #head {
-  background: #000000 url(../images/main/banner.JPG) top center;
+  background: #000000 url(banner.jpg) top center;
   background-size: cover;
   padding: 1px 0; /*Size of cover of other main titles*/
 }
