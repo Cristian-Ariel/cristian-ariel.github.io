@@ -803,7 +803,7 @@ footer.entry-meta .meta-in {
   color: #ccc;
 }
 #footer a:hover { 
-  color: #00FFDD ; /*Color when hoverin on icon*/
+  color: #00FFDD ; /*Color when hovering on icon*/
 }
 #footer h3.widget-title {
   font-weight: 600;
@@ -838,10 +838,11 @@ footer.entry-meta .meta-in {
 .follow-me-icons a:hover{ /*Icons hovering color*/
   color: #03ccb1;
 }
-.follow-me-icons i {
+.follow-me-icons i { /*Icons change spacing*/
   float: left;
-  margin: 0 10px 0 0;
+  margin: -20px 10px 0 0;
 }
+
 /* Max page width
 /////////////////////////////////////////////////////////////////////*/
 @media (min-width: 1200px) {
