@@ -1,0 +1,2020 @@
+/* ==========================================================================
+   Components
+
+   Reusable UI pieces shared across multiple pages.
+   ========================================================================== */
+
+
+/* ----- Buttons ---------------------------------------------------------- */
+
+.button {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.65rem 1rem;
+
+  border: 1px solid var(--color-text);
+  border-radius: var(--radius-sm);
+
+  color: var(--color-text);
+
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.button:hover,
+.button:focus-visible {
+  border-color: var(--color-accent-dark);
+  color: var(--color-accent-dark);
+  text-decoration: none;
+}
+
+.button--accent,
+.button--accent:visited {
+  min-height: 2.1rem;
+
+  padding: 0.2rem 0.8rem;
+
+  color: var(--color-accent-on-light-background);
+
+  font-size: 1rem;
+}
+
+.button--accent {
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.button--accent:hover,
+.button--accent:focus-visible {
+  border-color: var(--color-accent);
+
+  color: var(--color-accent-on-light-background);
+
+  box-shadow:
+    0 0 0 1px rgb(0 0 0 / 0.3),
+    0 0 10px rgb(0 255 221 / 0.65),
+    0 0 20px rgb(0 255 221 / 0.58);
+
+  text-decoration: none;
+}
+
+/* ----- Email Modal ------------------------------------------------------ */
+
+.email-modal {
+  width: min(calc(100% - 2rem), 30rem);
+
+  padding: 0;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+
+  background: var(--color-background);
+  color: var(--color-text);
+
+  box-shadow:
+    0 1rem 3rem rgb(0 0 0 / 0.25);
+}
+
+.email-modal::backdrop {
+  background: rgb(0 0 0 / 0.55);
+}
+
+.email-modal__panel {
+  position: relative;
+
+  padding: 2rem;
+}
+
+.email-modal__close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.8rem;
+
+  padding: 0.1rem 0.4rem;
+
+  border: 0;
+
+  background: transparent;
+
+  color: var(--color-muted);
+
+  font-size: 1.6rem;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.email-modal__close:hover,
+.email-modal__close:focus-visible {
+  color: var(--color-text);
+}
+
+.email-modal__title {
+  margin: 0 0 0.5rem;
+
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.email-modal__text {
+  margin: 0 0 1.25rem;
+}
+
+.email-modal__address-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.email-modal__address {
+  user-select: all;
+  flex: 1;
+  min-width: 0;
+
+  padding: 0.55rem 0.75rem;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+
+  overflow-wrap: anywhere;
+
+  background: var(--color-surface);
+
+  font-size: 0.95rem;
+}
+
+.email-modal__status {
+  min-height: 1.4rem;
+
+  margin: 0.6rem 0 0;
+
+  color: var(--color-muted);
+
+  font-size: 0.85rem;
+}
+
+@media (max-width: 32rem) {
+  .email-modal__address-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
+
+/* ----- Footer ----------------------------------------------------------- */
+
+.site-footer {
+  margin-top: 4rem;
+
+  background: var(--color-navigation);
+  color: #d0d0d0;
+}
+
+.footer-inner {
+  display: grid;
+  gap: 1rem;
+
+  width: 100%;
+  max-width: var(--container-max);
+
+  margin-inline: auto;
+  padding: 0.5rem 1.5rem;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.footer-brand-name,
+.footer-heading {
+  color: var(--color-accent);
+
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.footer-brand-name {
+  margin: 0;
+
+  letter-spacing: 0.02em;
+}
+
+.footer-description {
+  max-width: 32rem;
+
+  margin: 0;
+
+  color: #bdbdbd;
+
+  font-size: 0.9rem;
+}
+
+.footer-heading {
+  margin: 0 0 0.4rem;
+
+  letter-spacing: 0.01em;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.footer-links a,
+.footer-links a:visited {
+  width: fit-content;
+
+  color: var(--color-on-dark);
+
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible {
+  color: var(--color-accent);
+
+  text-shadow:
+    0 0 1px currentColor,
+    0 0 3px currentColor,
+    0 0 1px rgb(0 255 221 / 0.25);
+}
+
+.footer-quote-container {
+  display: flex;
+  flex-direction: column;
+
+  padding-left: 1.5rem;
+
+  border-left: 1px solid rgb(255 255 255 / 0.313);
+}
+
+.quote-text {
+  margin-bottom: 0;
+
+  color: #afafaf;
+
+  font-size: 0.9rem;
+  font-style: italic;
+  white-space: pre-line;
+}
+
+.quote-author {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+
+  color: #b7b6b6;
+
+  font-size: 0.8rem;
+}
+
+.footer-copyright {
+  grid-column: 1 / -1;
+
+  margin-top: 2.5rem;
+  margin-bottom: 0;
+
+  color: #b2afaf;
+
+  font-size: 0.75rem;
+}
+
+
+/* Desktop footer layout. */
+
+@media (min-width: 60rem) {
+  .footer-inner {
+    grid-template-columns: 1.2fr 0.8fr 1fr 2.4fr;
+  }
+
+  .footer-quote-container {
+    grid-column: 4;
+    grid-row: 1 / 3;
+  }
+
+  .footer-copyright {
+    grid-column: 1 / 4;
+    grid-row: 2;
+
+    align-self: end;
+  }
+}
+
+/* Tablet footer layout. */
+
+@media (min-width: 44rem) and (max-width: 59.99rem) {
+  .footer-inner {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .footer-quote-container {
+    grid-column: 1 / -1;
+
+    margin-top: 0.75rem;
+    padding-top: 1rem;
+    padding-left: 0;
+
+    border-top: 1px solid rgb(255 255 255 / 0.2);
+    border-left: 0;
+  }
+
+  .footer-copyright {
+    grid-column: 1 / -1;
+
+    margin-top: 1rem;
+  }
+}
+
+/* Mobile footer layout. */
+
+@media (max-width: 43.99rem) {
+  .footer-quote-container {
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+    padding-left: 0;
+
+    border-top: 1px solid rgb(255 255 255 / 0.2);
+    border-left: 0;
+  }
+
+  .footer-quote-container .quote-text {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    font-style: italic;
+  }
+
+  .footer-quote-container .quote-author {
+    font-size: 0.8rem;
+  }
+}
+
+
+/* ----- Project Grid ----------------------------------------------------- */
+
+.project-grid {
+  display: grid;
+
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(100%, 18rem), 1fr)
+  );
+
+  gap: 1.5rem;
+}
+
+
+/* ----- Project Card ----------------------------------------------------- */
+
+.project-card {
+  overflow: hidden;
+
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+
+  box-shadow:
+    0 0.35rem 0.9rem rgb(0 0 0 / 0.16),
+    0 0.1rem 0.25rem rgb(0 0 0 / 0.10);
+
+  cursor: pointer;
+
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* Card hover / focus effect based on Cristian's Lab. */
+
+.project-card:hover,
+.project-card:focus-within {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 0 0 1px rgb(0 0 0 / 0.3),
+    0 0 10px rgb(0 255 221 / 0.65),
+    0 0 20px rgb(0 255 221 / 0.58);
+}
+
+
+/* ----- Project Card Link ----------------------------------------------- */
+
+.project-card__link,
+.project-card__link:visited {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+
+  color: var(--color-text);
+
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.project-card__link:hover,
+.project-card__link:focus-visible {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.project-card__link:focus-visible {
+  outline: none;
+}
+
+
+/* ----- Project Card Image ---------------------------------------------- */
+
+.project-card__image-link {
+  display: block;
+
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.project-card__image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/* ----- Project Card Content -------------------------------------------- */
+
+.project-card__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  padding:
+    0
+    0.8rem
+    0.4rem;
+}
+
+.project-card__title {
+  margin: 0.2rem 0 0; /* 1st value determines top spacing. */
+
+  color: var(--color-text);
+
+  font-size: 1.2rem; /* Desktop/tablet size; mobile override is defined below. */
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.project-card__date {
+  margin: 0.05rem 0 0; /* 1st value determines top spacing. */
+
+  color: var(--color-muted);
+
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.project-card__summary {
+  margin: 0.2rem 0 0.4rem;
+
+  font-size: 0.92rem;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+
+/* Mobile project-card typography. */
+
+@media (max-width: 40rem) {
+  .project-card__title {
+    font-size: 1.3rem;
+  }
+}
+
+
+/* ----- Project Tags ----------------------------------------------------- */
+
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem; /* Horizontal gaps between tags. */
+
+  margin: auto 0 0.1rem; /* Spacing below the tags. */
+  padding: 0.05rem 0 0; /* 1st value is the spacing above the tags and the summary. */
+
+  list-style: none;
+}
+
+.project-card__tag {
+  padding: 0.01rem 0.3rem;
+
+  border: 1px solid #e1dfdf;
+  border-radius: 10px;
+
+  background-color: var(--color-surface);
+
+  font-size: 0.7rem;
+  font-weight: 400;
+
+  transition: background-color 0.25s ease;
+}
+
+.project-card:hover .project-card__tag,
+.project-card:focus-within .project-card__tag {
+  background-color: rgb(85 246 206 / 0.2);
+}
+
+
+/* ----- Individual Project Page ----------------------------------------- */
+
+/*
+  Individual project pages use a narrower centered column than the main
+  site container.
+
+  This keeps project content visually focused on large screens while still
+  allowing it to use the full available width on smaller screens.
+*/
+
+.project-page {
+  width: min(100%, 60rem);
+
+  margin-inline: auto;
+}
+
+.project-body {
+  width: min(100%, 40rem);
+  max-width: 40rem;
+
+  margin-inline: auto;
+}
+
+
+/* ----- Individual Project Header --------------------------------------- */
+
+.project-header {
+  width: min(100%, 44rem);
+
+  padding-top: 1.5rem;
+  margin: 0 auto 1.25rem;
+}
+
+.project-index-title {
+  margin: 1.5rem 0 2rem;
+
+  text-align: center;
+
+  font-size: 2.7rem; /* This changes main title of "Engineering Projects" and "Art Projects" */
+  line-height: 1.1;
+}
+
+/* Mobile project-index title. */
+
+@media (max-width: 40rem) {
+  .project-index-title {
+    font-size: 2.25rem;
+  }
+}
+
+.project-header__title {
+  max-width: 32ch;
+
+  margin: 0 auto;
+
+  font-size: clamp(2rem, 4vw, 2rem);
+  line-height: 1.08;
+
+  text-align: center;
+}
+
+.project-header__date {
+  margin: 0.9rem 0 0;
+
+  color: var(--color-muted);
+
+  font-size: 0.9rem;
+
+  text-align: center;
+}
+
+.project-header__summary {
+  max-width: 40rem;
+
+  margin: 0.75rem auto 0;
+
+  line-height: 1.5;
+
+  text-align: left;
+}
+
+
+/* ----- Individual Project Body (Subsection Title) Typography ----------- */
+
+.project-body h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+
+  font-size: clamp(1.4rem, 2.3vw, 1.5rem);
+  line-height: 1.15;
+}
+
+.project-body > p {
+  margin-bottom: 1rem;
+}
+
+
+/* ----- Individual Project Hero ----------------------------------------- */
+
+.project-hero {
+  width: min(100%, 40rem);
+
+  margin: 1.25rem auto;
+}
+
+.project-hero__image {
+  display: block;
+
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  border-radius: 0.75rem;
+
+  object-fit: contain;
+}
+
+/* ----- Art Project Metadata -------------------------------------------- */
+
+.project-art-meta {
+  width: min(100%, 40rem);
+
+  margin: 0 auto 1.5rem;
+
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.project-art-meta p {
+  margin: 0;
+}
+
+.project-art-meta p + p {
+  margin-top: 0.25rem;
+}
+
+
+/* ----- Project Figure --------------------------------------------------- */
+
+.project-figure {
+  width: min(100%, 28rem);
+
+  margin: 1rem auto 1.25rem;
+}
+
+.project-figure__image {
+  display: block;
+
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  border-radius: 0.75rem;
+
+  object-fit: contain;
+}
+
+
+/*
+  Standalone project images can be expanded using the shared lightbox.
+  This includes the hero image and individual project figures.
+*/
+
+[data-lightbox-standalone] {
+  cursor: zoom-in;
+}
+
+[data-lightbox-standalone]:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.project-figure__caption {
+  margin-top: 0.35rem;
+
+  color: var(--color-muted);
+
+  font-size: 0.85rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+
+/* ----- Project Gallery -------------------------------------------------- */
+
+.project-gallery {
+  display: grid;
+  gap: 1rem;
+
+  width: min(100%, 28rem);
+
+  margin: 0.5rem auto 0.75rem;
+}
+
+
+/*
+  The viewport provides the positioning reference for the carousel controls.
+  Previous / Next buttons and the image counter are layered over the image
+  instead of taking up a separate row below it.
+*/
+
+.project-gallery__viewport {
+  position: relative;
+}
+
+
+/* Individual gallery image + caption. */
+
+.project-gallery__item {
+  margin: 0;
+}
+
+.project-gallery__image {
+  display: block;
+
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  border-radius: 0.75rem;
+
+  object-fit: contain;
+}
+
+.project-gallery__caption {
+  min-height: 2.8em;
+
+  margin-top: 0.35rem;
+
+  color: var(--color-muted);
+
+  font-size: 0.85rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+
+/*
+  When JavaScript successfully enhances the gallery,
+  hide every item except the currently active item.
+
+  If JavaScript does not load, all images remain visible as a fallback.
+*/
+
+.project-gallery--enhanced .project-gallery__item {
+  display: none;
+}
+
+.project-gallery--enhanced .project-gallery__item--active {
+  display: block;
+}
+
+
+/*
+  Preserve normal vertical page scrolling on touchscreens while allowing
+  gallery.js to handle horizontal swipe gestures.
+*/
+
+.project-gallery--enhanced {
+  touch-action: pan-y;
+}
+
+
+/* ----- Project Gallery Controls ---------------------------------------- */
+
+.project-gallery__controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+
+/* Previous / Next buttons. */
+
+.project-gallery__button {
+  position: absolute;
+  top: 50%;
+
+  display: flex;
+
+  width: 2.25rem;
+  height: 2.25rem;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 2px solid rgb(255 255 255 / 0.65);
+  border-radius: 50%;
+
+  background: rgb(0 0 0 / 0.55);
+  color: #ffffff;
+
+  cursor: pointer;
+  pointer-events: auto;
+
+  transform: translateY(-50%);
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.project-gallery__button--previous {
+  left: 0.35rem;
+}
+
+.project-gallery__button--next {
+  right: 0.35rem;
+}
+
+@media (min-width: 48rem) {
+  .project-gallery__button {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .project-gallery__button--previous {
+    left: -3.5rem;
+  }
+
+  .project-gallery__button--next {
+    right: -3.5rem;
+  }
+}
+
+
+/* Neon interaction effect based on the project-card glow. */
+
+.project-gallery__button:focus-visible {
+  border-color: var(--color-accent);
+
+  background: rgb(0 0 0 / 0.75);
+
+  box-shadow:
+    0 0 6px rgb(0 255 221 / 0.65),
+    0 0 12px rgb(0 255 221 / 0.45);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-gallery__button:hover {
+    border-color: var(--color-accent);
+
+    background: rgb(0 0 0 / 0.75);
+
+    box-shadow:
+      0 0 6px rgb(0 255 221 / 0.65),
+      0 0 12px rgb(0 255 221 / 0.45);
+  }
+}
+
+.project-gallery__button:active {
+  border-color: var(--color-accent);
+
+  background: rgb(0 0 0 / 0.75);
+
+  box-shadow:
+    0 0 6px rgb(0 255 221 / 0.65),
+    0 0 12px rgb(0 255 221 / 0.45);
+}
+
+
+/* CSS-drawn chevrons stay geometrically centered. */
+
+.project-gallery__button::before {
+  content: "";
+
+  display: block;
+
+  width: 0.55rem;
+  height: 0.55rem;
+
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+}
+
+.project-gallery__button--previous::before {
+  transform: rotate(135deg);
+}
+
+.project-gallery__button--next::before {
+  transform: rotate(-45deg);
+}
+
+
+/* Current image position, for example: 1 / 3. */
+
+.project-gallery__counter {
+  position: absolute;
+  top: auto;
+  bottom: 0.3rem;
+  left: 50%;
+
+  padding: 0.1rem 0.4rem;
+
+  border-radius: 999px;
+
+  background: rgb(0 0 0 / 0.7);
+  color: #ffffff;
+
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1;
+
+  pointer-events: none;
+
+  transform: translateX(-50%);
+}
+
+
+/*
+  Gallery images become interactive when JavaScript enables the lightbox.
+*/
+
+.project-gallery--enhanced .project-gallery__image[data-lightbox-image] {
+  cursor: zoom-in;
+}
+
+.project-gallery--enhanced
+.project-gallery__image[data-lightbox-image]:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+
+/* ----- Project Lightbox ------------------------------------------------- */
+
+/*
+  The lightbox is shared by galleries and standalone project images.
+
+  The outer lightbox fills the viewport and centers the lightbox content.
+*/
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+
+  z-index: 1000;
+
+  display: grid;
+  place-items: center;
+
+  padding: 1rem;
+
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
+
+/* Dark overlay behind the expanded image. */
+
+.lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+
+  background: rgb(0 0 0 / 0.88);
+}
+
+
+/*
+  Lightbox content uses two rows:
+
+  Row 1:
+      Full Resolution | spacer | Close
+
+  Row 2:
+      Expanded image with the image counter overlaid at the bottom-center.
+
+  Reserving real space for the top controls prevents them from being pushed
+  outside the viewport when a large image is displayed.
+*/
+
+.lightbox__content {
+  position: relative;
+  z-index: 1;
+
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr)
+    auto;
+
+  grid-template-rows:
+    auto
+    minmax(0, 1fr);
+
+  column-gap: 0.75rem;
+  row-gap: 0.5rem;
+
+  width: fit-content;
+
+  max-width: min(96vw, 100rem);
+
+  max-height: calc(100vh - 2rem);
+  max-height: calc(100dvh - 2rem);
+
+  align-items: center;
+}
+
+
+/* Expanded project image. */
+
+.lightbox__image {
+  grid-column: 1 / -1;
+  grid-row: 2;
+
+  display: block;
+
+  min-width: 0;
+
+  max-width: 100%;
+
+  max-height: calc(100vh - 6rem);
+  max-height: calc(100dvh - 6rem);
+
+  width: auto;
+  height: auto;
+
+  justify-self: center;
+
+  border-radius: 0.75rem;
+
+  object-fit: contain;
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
+
+/* ----- Full-Resolution Image Link -------------------------------------- */
+
+/*
+  Opens the currently displayed image at its original URL in a new tab.
+
+  The browser can then provide its native image zooming and panning.
+*/
+
+.lightbox__full-resolution[hidden] {
+  display: none;
+}
+
+.lightbox__full-resolution,
+.lightbox__full-resolution:visited {
+  position: static;
+
+  grid-column: 1;
+  grid-row: 1;
+
+  justify-self: start;
+
+  display: inline-flex;
+  min-height: 2.75rem;
+
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+
+  padding: 0 0.8rem;
+
+  border: 2px solid rgb(255 255 255 / 0.65);
+  border-radius: 999px;
+
+  background: rgb(0 0 0 / 0.55);
+  color: #ffffff;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1;
+
+  white-space: nowrap;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+/*
+  Keyboard users always receive visible focus feedback.
+
+  Touchscreens receive the glow only while the control is actively pressed.
+*/
+
+.lightbox__full-resolution:focus-visible,
+.lightbox__full-resolution:active {
+  border-color: var(--color-accent);
+
+  background: rgb(0 0 0 / 0.75);
+  color: #ffffff;
+
+  box-shadow:
+    0 0 6px rgb(0 255 221 / 0.65),
+    0 0 12px rgb(0 255 221 / 0.45);
+
+  text-decoration: none;
+}
+
+
+/*
+  Persistent hover styling is limited to devices with a genuine
+  mouse-like hover state.
+*/
+
+@media (hover: hover) and (pointer: fine) {
+  .lightbox__full-resolution:hover {
+    border-color: var(--color-accent);
+
+    background: rgb(0 0 0 / 0.75);
+    color: #ffffff;
+
+    box-shadow:
+      0 0 6px rgb(0 255 221 / 0.65),
+      0 0 12px rgb(0 255 221 / 0.45);
+
+    text-decoration: none;
+  }
+}
+
+
+/* ----- Lightbox Close Button ------------------------------------------- */
+
+.lightbox__close {
+  position: relative;
+
+  grid-column: 3;
+  grid-row: 1;
+
+  justify-self: end;
+
+  z-index: 3;
+
+  display: flex;
+
+  width: 2.75rem;
+  height: 2.75rem;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 2px solid rgb(255 255 255 / 0.65);
+  border-radius: 50%;
+
+  background: rgb(0 0 0 / 0.55);
+  color: #ffffff;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.lightbox__close:hover,
+.lightbox__close:focus-visible {
+  border-color: var(--color-accent);
+
+  background: rgb(0 0 0 / 0.75);
+
+  box-shadow:
+    0 0 6px rgb(0 255 221 / 0.65),
+    0 0 12px rgb(0 255 221 / 0.45);
+}
+
+.lightbox__close::before,
+.lightbox__close::after {
+  content: "";
+
+  position: absolute;
+
+  width: 1rem;
+  height: 2px;
+
+  background: currentColor;
+  border-radius: 999px;
+}
+
+.lightbox__close::before {
+  transform: rotate(45deg);
+}
+
+.lightbox__close::after {
+  transform: rotate(-45deg);
+}
+
+
+/* ----- Lightbox Navigation --------------------------------------------- */
+
+/*
+  Respect the hidden state controlled by gallery.js.
+
+  The explicit rule is necessary because .lightbox__button uses
+  display:flex.
+*/
+
+.lightbox__button[hidden],
+.lightbox__counter[hidden] {
+  display: none;
+}
+
+
+/*
+  Previous / Next controls remain positioned at the sides of the viewport.
+
+  They are separate from the top control row because they navigate between
+  gallery images rather than controlling the lightbox itself.
+*/
+
+.lightbox__button {
+  position: fixed;
+  top: 50%;
+
+  z-index: 3;
+
+  display: flex;
+
+  width: 2.75rem;
+  height: 2.75rem;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 2px solid rgb(255 255 255 / 0.65);
+  border-radius: 50%;
+
+  background: rgb(0 0 0 / 0.55);
+  color: #ffffff;
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.lightbox__button--previous {
+  left: 1rem;
+}
+
+.lightbox__button--next {
+  right: 1rem;
+}
+
+
+/* Keyboard users should always receive a visible focus indication. */
+
+.lightbox__button:focus-visible {
+  border-color: var(--color-accent);
+
+  background: rgb(0 0 0 / 0.75);
+
+  box-shadow:
+    0 0 6px rgb(0 255 221 / 0.65),
+    0 0 12px rgb(0 255 221 / 0.45);
+}
+
+
+/*
+  Only devices that genuinely support hovering should receive the
+  persistent hover effect.
+
+  This prevents touchscreen browsers from leaving a button glowing
+  after it has been tapped.
+*/
+
+@media (hover: hover) and (pointer: fine) {
+  .lightbox__button:hover {
+    border-color: var(--color-accent);
+
+    background: rgb(0 0 0 / 0.75);
+
+    box-shadow:
+      0 0 6px rgb(0 255 221 / 0.65),
+      0 0 12px rgb(0 255 221 / 0.45);
+  }
+}
+
+
+/*
+  Touchscreens still get immediate visual feedback while the finger
+  is actually pressing the button.
+*/
+
+.lightbox__button:active {
+  border-color: var(--color-accent);
+
+  background: rgb(0 0 0 / 0.75);
+
+  box-shadow:
+    0 0 6px rgb(0 255 221 / 0.65),
+    0 0 12px rgb(0 255 221 / 0.45);
+}
+
+
+/* CSS-drawn chevrons remain geometrically centered. */
+
+.lightbox__button::before {
+  content: "";
+
+  display: block;
+
+  width: 0.55rem;
+  height: 0.55rem;
+
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+}
+
+.lightbox__button--previous::before {
+  transform: rotate(135deg);
+}
+
+.lightbox__button--next::before {
+  transform: rotate(-45deg);
+}
+
+
+/*
+  Current image position inside the lightbox, for example: 2 / 5.
+
+  The counter shares the same grid area as the expanded image and is aligned
+  to the bottom-center of that row. This is more reliable than absolutely
+  positioning it relative to the overall lightbox content box.
+*/
+
+.lightbox__counter {
+  position: relative;
+
+  grid-column: 1 / -1;
+  grid-row: 2;
+
+  align-self: end;
+  justify-self: center;
+
+  z-index: 3;
+
+  margin-bottom: 0.75rem;
+  padding: 0.25rem 0.55rem;
+
+  border-radius: 999px;
+
+  background: rgb(0 0 0 / 0.55);
+  color: #ffffff;
+
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1;
+
+  pointer-events: none;
+}
+
+
+/* ----- Mobile Lightbox Layout ------------------------------------------ */
+
+/*
+  The same two-row structure is retained on mobile.
+
+  Controls therefore stay immediately above the image without overlapping
+  it or being pushed outside the visible viewport.
+*/
+
+@media (max-width: 44rem) {
+  .lightbox {
+    padding: 0.75rem;
+  }
+
+  .lightbox__content {
+    column-gap: 0.5rem;
+    row-gap: 0.5rem;
+
+    max-width: calc(100vw - 1.5rem);
+
+    max-height: calc(100vh - 1.5rem);
+    max-height: calc(100dvh - 1.5rem);
+  }
+
+  .lightbox__full-resolution {
+    min-height: 2.5rem;
+
+    padding-inline: 0.65rem;
+
+    font-size: 0.8rem;
+  }
+
+  .lightbox__close {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .lightbox__counter {
+    font-size: 0.78rem;
+  }
+
+  .lightbox__image {
+    max-height: calc(100vh - 5.75rem);
+    max-height: calc(100dvh - 5.75rem);
+  }
+}
+
+
+/* ----- Reduced Motion --------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-card__tag,
+  .project-gallery__button,
+  .lightbox__button,
+  .lightbox__close,
+  .lightbox__full-resolution {
+    transition: none;
+  }
+
+  .project-card:hover,
+  .project-card:focus-within {
+    transform: none;
+  }
+}
+
+
+/* ----- Youtube Video --------------------------------------------------- */
+
+.project-video {
+  width: 100%;
+  max-width: 440px;
+
+  margin: 1.25rem auto 1.25rem;
+
+  aspect-ratio: 16 / 9;
+}
+
+.project-video iframe {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  border: 0;
+  border-radius: 8px;
+}
+
+/* -------------------------------------------------
+   3D Model Viewer
+------------------------------------------------- */
+
+.model-viewer-figure {
+  width: min(100%, 28rem);
+  margin: 1rem auto 1.25rem;
+}
+
+.model-viewer-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.model-viewer {
+  position: absolute;
+  inset: 0;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      180deg,
+      #3e3e3e 0%,
+      #cdcdcd 80%
+    );
+
+  border: 1px solid #d2d1d1;
+  border-radius: 12px;
+  overflow: hidden;
+
+  /*
+   * The model itself owns pointer gestures while the user is
+   * rotating or zooming it.
+   */
+  touch-action: none;
+}
+
+
+/* ----- Loading State ---------------------------------------------------- */
+
+.model-viewer-loading {
+  position: absolute;
+  inset: 0;
+
+  display: grid;
+  place-items: center;
+
+  margin: 0;
+
+  color: rgb(255 255 255 / 0.9);
+
+  font-size: 1.1rem;
+  font-weight: 500;
+
+  pointer-events: none;
+}
+
+
+/*
+ * Explicitly enforce the hidden state.
+ *
+ * This is important because several viewer controls define their own
+ * display behavior and should remain invisible until JavaScript decides
+ * that the model is ready.
+ */
+.model-viewer-loading[hidden],
+.model-viewer-reset[hidden],
+.model-viewer-expand[hidden],
+.model-viewer-hint[hidden] {
+  display: none;
+}
+
+
+/* ----- Viewer Controls -------------------------------------------------- */
+
+/*
+ * Reset and Expand deliberately share the same visual language.
+ *
+ * Reset stays on the left in both embedded and expanded views.
+ * Expand stays on the right because it behaves like the higher-level
+ * media/viewing action.
+ */
+.model-viewer-reset,
+.model-viewer-expand {
+  position: absolute;
+  bottom: 0.35rem;
+
+  padding: 0.25rem 0.6rem;
+
+  border: 2px solid rgb(255 255 255 / 0.65);
+  border-radius: 999px;
+
+  background: rgb(0 0 0 / 0.6);
+  color: #ffffff;
+
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.model-viewer-reset {
+  left: 0.4rem;
+}
+
+.model-viewer-expand {
+  right: 0.4rem;
+}
+
+
+/* Keyboard interaction. */
+.model-viewer-reset:focus-visible,
+.model-viewer-expand:focus-visible {
+  border-color: var(--color-accent);
+  background: rgb(0 0 0 / 0.75);
+
+  box-shadow:
+    0 0 6px rgb(0 255 221 / 0.65),
+    0 0 12px rgb(0 255 221 / 0.45);
+
+  outline: none;
+}
+
+
+/*
+ * Persistent hover glow is limited to devices with genuine mouse-like
+ * hover support. This avoids sticky hover states on touchscreens.
+ */
+@media (hover: hover) and (pointer: fine) {
+  .model-viewer-reset:hover,
+  .model-viewer-expand:hover {
+    border-color: var(--color-accent);
+    background: rgb(0 0 0 / 0.75);
+
+    box-shadow:
+      0 0 6px rgb(0 255 221 / 0.65),
+      0 0 12px rgb(0 255 221 / 0.45);
+  }
+}
+
+
+/* Immediate touch / click feedback. */
+.model-viewer-reset:active,
+.model-viewer-expand:active {
+  border-color: var(--color-accent);
+  background: rgb(0 0 0 / 0.75);
+
+  box-shadow:
+    0 0 6px rgb(0 255 221 / 0.65),
+    0 0 12px rgb(0 255 221 / 0.45);
+}
+
+
+/* ----- Interaction Hint ------------------------------------------------- */
+
+.model-viewer-hint {
+  position: absolute;
+  top: 0.75rem;
+  left: 50%;
+
+  margin: 0;
+  padding: 0.4rem 0.7rem;
+
+  transform: translateX(-50%);
+
+  background: rgb(0 0 0 / 0.65);
+  color: #ffffff;
+
+  border-radius: 999px;
+
+  font-size: 0.9rem;
+  line-height: 1;
+  white-space: nowrap;
+
+  opacity: 1;
+  pointer-events: none;
+
+  /*
+   * The hint remains visible briefly after first interaction
+   * and then fades away rather than disappearing abruptly.
+   */
+  transition:
+    opacity 1.4s ease;
+
+  z-index: 2;
+}
+
+.model-viewer-hint.is-hidden {
+  opacity: 0;
+}
+
+
+/* ----- Caption ---------------------------------------------------------- */
+
+.model-viewer-caption {
+  margin: 0.1rem 0 0;
+
+  color: #666;
+
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+
+/* ----- Loading Error ---------------------------------------------------- */
+
+.model-viewer-loading.is-error {
+  color: rgb(255 255 255 / 0.95);
+}
+
+
+/* -------------------------------------------------
+   Expanded 3D Model Viewer
+------------------------------------------------- */
+
+/*
+ * The expanded viewer intentionally follows the same interaction language
+ * as the site's image lightbox:
+ *
+ * - darkened page backdrop
+ * - close button in the upper-right area
+ * - clicking outside the viewer closes it
+ * - Escape closes it
+ *
+ * JavaScript moves the SAME live <model-viewer> into this overlay rather
+ * than creating a second model. This preserves the GLB instance and,
+ * together with model-viewer.js, preserves camera state.
+ */
+
+.model-viewer-lightbox[hidden] {
+  display: none;
+}
+
+.model-viewer-lightbox {
+  position: fixed;
+  inset: 0;
+
+  z-index: 1100;
+
+  display: grid;
+  place-items: center;
+
+  /*
+   * Keep only a small margin around the expanded viewer.
+   *
+   * Earlier versions reserved an entire grid row for the X button.
+   * That wasted a noticeable amount of vertical space on desktop.
+   */
+  padding: 0.75rem;
+
+  overscroll-behavior: none;
+}
+
+.model-viewer-lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+
+  /*
+   * Matches the image-lightbox backdrop so both media systems
+   * feel like part of the same website.
+   */
+  background: rgb(0 0 0 / 0.88);
+}
+
+
+/* ----- Desktop / Tablet Expanded Layout -------------------------------- */
+
+/*
+ * IMPORTANT LAYOUT CHANGE:
+ *
+ * The close button no longer occupies its own grid row on larger screens.
+ *
+ * It floats immediately above the upper-right corner of the viewer instead.
+ * This recovers the vertical space that was previously wasted between the
+ * X button and the 3D viewport.
+ *
+ * Six rem of total vertical allowance gives the close button enough room
+ * above the viewer while still making the model substantially taller than
+ * the old 88vh two-row layout.
+ */
+.model-viewer-lightbox__content {
+  position: relative;
+  z-index: 1;
+
+  width: min(96vw, 100rem);
+
+  height: min(calc(100vh - 6rem), 55rem);
+  height: min(calc(100dvh - 6rem), 55rem);
+
+  min-width: 0;
+  min-height: 0;
+}
+
+.model-viewer-lightbox__stage {
+  width: 100%;
+  height: 100%;
+
+  min-width: 0;
+  min-height: 0;
+}
+
+
+/*
+ * The same live model-viewer wrapper is moved into the overlay.
+ *
+ * Removing the original 16:9 constraint lets it use the expanded
+ * viewport dimensions instead.
+ */
+.model-viewer-wrapper--expanded {
+  width: 100%;
+  height: 100%;
+
+  aspect-ratio: auto;
+  margin: 0;
+}
+
+
+/* ----- Expanded View Close Button -------------------------------------- */
+
+.model-viewer-lightbox__close {
+  position: absolute;
+
+  /*
+   * Float immediately above the viewer instead of reserving
+   * a dedicated horizontal row for the button.
+   *
+   * 2.75rem button height + 0.25rem visual gap = 3rem.
+   */
+  top: -2.25rem;
+  right: 0;
+
+  z-index: 3;
+
+  display: flex;
+
+  width: 2.75rem;
+  height: 2.75rem;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 2px solid rgb(255 255 255 / 0.65);
+  border-radius: 50%;
+
+  background: rgb(0 0 0 / 0.55);
+  color: #ffffff;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.model-viewer-lightbox__close:focus-visible {
+  border-color: var(--color-accent);
+  background: rgb(0 0 0 / 0.75);
+
+  box-shadow:
+    0 0 6px rgb(0 255 221 / 0.65),
+    0 0 12px rgb(0 255 221 / 0.45);
+
+  outline: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .model-viewer-lightbox__close:hover {
+    border-color: var(--color-accent);
+    background: rgb(0 0 0 / 0.75);
+
+    box-shadow:
+      0 0 6px rgb(0 255 221 / 0.65),
+      0 0 12px rgb(0 255 221 / 0.45);
+  }
+}
+
+.model-viewer-lightbox__close:active {
+  border-color: var(--color-accent);
+  background: rgb(0 0 0 / 0.75);
+
+  box-shadow:
+    0 0 6px rgb(0 255 221 / 0.65),
+    0 0 12px rgb(0 255 221 / 0.45);
+}
+
+
+/* CSS-drawn X icon. */
+.model-viewer-lightbox__close::before,
+.model-viewer-lightbox__close::after {
+  content: "";
+
+  position: absolute;
+
+  width: 1rem;
+  height: 2px;
+
+  background: currentColor;
+  border-radius: 999px;
+}
+
+.model-viewer-lightbox__close::before {
+  transform: rotate(45deg);
+}
+
+.model-viewer-lightbox__close::after {
+  transform: rotate(-45deg);
+}
+
+
+/* ----- Mobile Expanded Viewer ------------------------------------------ */
+
+@media (max-width: 44rem) {
+  /*
+   * Mobile deliberately keeps the close button in its own row.
+   *
+   * Unlike desktop, placing the X outside the content area on a narrow
+   * viewport risks putting it too close to the edge of the screen.
+   *
+   * The row is kept extremely tight so very little vertical space is lost.
+   */
+  .model-viewer-lightbox {
+    /*
+     * Extra bottom breathing room keeps Reset away from the phone's
+     * bottom edge / gesture area and makes it easier to tap.
+     */
+    padding:
+      0.5rem
+      0.75rem
+      max(2rem, env(safe-area-inset-bottom));
+  }
+
+  .model-viewer-lightbox__content {
+    /*
+     * Reintroduce a two-row layout only on mobile:
+     *
+     * Row 1 = close button
+     * Row 2 = expanded model viewer
+     */
+    display: grid;
+
+    grid-template-rows:
+      auto
+      minmax(0, 1fr);
+
+    /*
+     * This was reduced from the original larger spacing after testing
+     * showed too much unused space between the X and the viewer.
+     */
+    row-gap: 0.1rem;
+
+    width: calc(100vw - 1.5rem);
+
+    /*
+     * Leave deliberate room below the viewer so its bottom controls
+     * do not sit directly against the phone's screen edge.
+     */
+    height: calc(100vh - 4rem);
+    height: calc(100dvh - 4rem);
+  }
+
+  .model-viewer-lightbox__stage {
+    grid-row: 2;
+  }
+
+  .model-viewer-lightbox__close {
+    /*
+     * Undo the desktop floating position.
+     *
+     * On mobile the X participates in the first grid row so it stays
+     * comfortably inside the usable viewport.
+     */
+    position: relative;
+
+    top: auto;
+    right: auto;
+
+    grid-row: 1;
+    justify-self: end;
+
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+
+/* ----- Reduced Motion --------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  /*
+   * Keep all controls functional while removing decorative transitions
+   * for users who request reduced motion.
+   */
+  .model-viewer-reset,
+  .model-viewer-expand,
+  .model-viewer-lightbox__close,
+  .model-viewer-hint {
+    transition: none;
+  }
+}
+
+

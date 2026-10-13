@@ -1,0 +1,159 @@
+/* ==========================================================================
+   Home Page
+   ========================================================================== */
+
+
+/* ----- Homepage Introduction -------------------------------------------- */
+
+.home-hero {
+  padding: 2rem 0 2.5rem;
+}
+
+.home-hero__inner {
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+.home-hero__photo {
+  width: 11rem;
+  height: auto;
+  margin-bottom: 0.8rem;
+  border-radius: 0.6rem;
+}
+
+.home-hero__copy {
+  max-width: 36rem;
+
+  margin: 0;
+
+  font-size: 1.1rem;
+  line-height: 1.6;
+
+  text-align: center;
+}
+
+.home-hero__copy a,
+.home-hero__copy a:visited {
+  color: var(--color-accent-on-light-background);
+}
+
+
+/* ----- Homepage Section Titles ----------------------------------------- */
+
+.home-section__title {
+  margin: 0 0 2.6rem; /* Last value changes spacing between title and cards. */
+
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.15;
+
+  text-align: center;
+}
+
+
+/* Horizontal divider bars used around homepage section titles. */
+
+.home-section__divider {
+  display: flex;
+
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.home-section__divider::before,
+.home-section__divider::after {
+  content: "";
+
+  flex: 1;
+
+  height: 3px;
+
+  background-color: rgb(189 189 189 / 0.7);
+}
+
+.home-section__divider span {
+  flex: 0 0 auto;
+}
+
+
+/* Mobile homepage section titles. */
+
+@media (max-width: 40rem) {
+  .home-section__title {
+    margin-bottom: 1.75rem;
+
+    font-size: 1.75rem;
+  }
+
+  .home-section__divider {
+    display: block;
+  }
+
+  .home-section__divider::before,
+  .home-section__divider::after {
+    display: none;
+  }
+}
+
+
+/* ----- Homepage Section Actions ---------------------------------------- */
+
+.home-section__action {
+  display: flex;
+
+  justify-content: center;
+
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+
+
+/* ----- Homepage Goodbye ------------------------------------------------- */
+
+.home-goodbye {
+  padding: 1rem 0 0.2rem;
+}
+
+.home-goodbye__inner {
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+
+/*
+  The goodbye heading reuses the shared homepage section-title style.
+
+  Its bottom spacing is intentionally much tighter because the heading and
+  animation are treated as one visual group rather than separate content
+  blocks.
+*/
+
+.home-goodbye .home-section__title {
+  margin-bottom: 0.1rem;
+}
+
+
+/*
+  The goodbye container uses align-items: center, which would otherwise allow
+  the divider heading to shrink to the width of its text.
+
+  Giving the divider full width preserves the horizontal lines on desktop.
+*/
+
+.home-goodbye .home-section__divider {
+  width: 100%;
+}
+
+.home-goodbye__image {
+  width: 15rem;
+  height: auto;
+}

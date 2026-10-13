@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <meta name="color-scheme" content="light">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="/assets/icons/site-favicon.png"
+  >
+
+  <meta
+    name="description"
+    content="A system that allows a motorcycle&#39;s ignition to be enabled using a wearable NFC tag instead of a physical key while minimizing standby battery drain.
+"
+  >
+
+  <title>
+    Keyless Motorcycle Ignition System | Cristian A. Guzman
+  </title>
+
+  <script>
+    document.documentElement.classList.add("js");
+  </script>
+
+  <link
+    rel="stylesheet"
+    href="/assets/css/style.css"
+  >
+</head>
+
+
+<body>
+
+  <a
+    class="skip-link"
+    href="#main-content"
+  >
+    Skip to content
+  </a>
+
+
+  <div class="site-frame">
+
+    <header class="site-header">
+  <div class="navigation-inner container">
+
+    <a class="branding" href="/" aria-label="Cristian A. Guzman homepage">
+  <svg class="brand-logo" aria-hidden="true">
+    <use href="/assets/images/global/logo-nav-bar-plain.svg#logo-navigation-bar"></use>
+  </svg>
+
+  <span class="brand-text">
+    <span class="brand-name">Cristian A. Guzman</span>
+    <span class="brand-subtitle">
+      Electrical &amp; Mechatronic Engineering
+    </span>
+  </span>
+</a>
+
+    <button
+      class="navigation-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="primary-navigation"
+      aria-label="Open navigation menu"
+      data-navigation-toggle>
+      <span class="navigation-toggle-icon" aria-hidden="true"></span>
+    </button>
+
+    <nav
+      id="primary-navigation"
+      class="site-navigation"
+      aria-label="Primary navigation"
+      data-navigation
+      data-open="false">
+      <ul class="navigation-links">
+        <li>
+          <a href="/">
+            Home
+          </a>
+        </li>
+
+        <li>
+          <a href="/projects/" aria-current="page">
+            Engineering Projects
+          </a>
+        </li>
+
+        <li>
+          <a href="/art/">
+            Art
+          </a>
+        </li>
+
+        <li>
+          <a href="/about/">
+            About
+          </a>
+        </li>
+
+        <li>
+          <a href="/contact/">
+            Contact
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<button
+  class="navigation-backdrop"
+  type="button"
+  aria-label="Close navigation menu"
+  data-navigation-backdrop
+  hidden>
+</button>
+
+
+    <main id="main-content">
+      
+<article class="container section">
+
+  <div class="project-page">
+
+    <header class="project-header">
+
+      <h1 class="project-header__title">
+        Keyless Motorcycle Ignition System
+      </h1>
+
+      <p class="project-header__date">
+        December 2021
+      </p>
+
+      <p class="project-header__summary">
+        A system that allows a motorcycle&#39;s ignition to be enabled using a wearable NFC tag instead of a physical key while minimizing standby battery drain.
+
+      </p>
+
+    </header>
+
+
+    <figure class="project-hero">
+      <img
+        src="/projects/keyless-motorcycle-ignition-system/figures/keyless-ignition-hero.gif"
+        alt="Keyless Motorcycle Ignition System"
+        class="project-hero__image"
+        decoding="async"
+        fetchpriority="high"
+        data-lightbox-standalone
+      >
+    </figure>
+
+
+    
+
+
+    <div class="prose project-body">
+      <h2>Overview</h2>
+<p>This project is a custom keyless ignition system that uses an NFC ring to enable a motorcycle’s ignition while keeping the original keyed ignition available as a fallback.</p>
+<p>One of the main design goals was minimizing standby battery drain. Instead of leaving the NFC reader powered continuously, the system remains normally unpowered while the motorcycle is off. Pressing the brake pedal momentarily powers the controller, which then checks the NFC tag and, if authorized, keeps the system on and enables the ignition.</p>
+<p>The project involved circuit and PCB design, embedded firmware, automotive electrical protection, CAD, 3D printing, wiring, and full vehicle integration.</p>
+<p><strong>Watch the Complete Project Walkthrough</strong></p>
+<p>This is a detailed video covering the system architecture, circuit design, firmware, fabrication, testing, and motorcycle installation:</p>
+<div class="project-video">
+  <iframe
+    src="https://www.youtube.com/embed/Ip3jwV7dnoM"
+    title="Making a Keyless Motorcycle Ignition with a Ring"
+    loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+  </iframe>
+</div>
+<p>You can download the full <a href="https://drive.google.com/file/d/1D22VbdVqOc0YWlI75PouFQuNAUfmh6G7/view" target="_blank" rel="noopener noreferrer">documentation file here</a><br>
+The source code is available on <a href="https://github.com/Cristian-Ariel/keyless-motorcycle-igntion-with-a-ring-nfc" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+<h2>System Architecture</h2>
+<p>The system is centered around a main control board built around an ATmega328P microcontroller. Pressing the brake pedal momentarily powers the controller, allowing it to read the NFC tag. If the tag is authorized, the controller keeps the system powered and activates the relay that enables the motorcycle's ignition circuit.</p>
+<p>Two reed switches provide the main external inputs. The brake pedal switch initiates the startup sequence, while the kickstand switch is used to place the controller into a low power state while the motorcycle is running and wake it again when the kickstand is lowered.</p>
+<figure class="project-figure">
+<img src="/projects/keyless-motorcycle-ignition-system/figures/hardware-overview-diagram.jpg" alt="Hardware architecture diagram showing the main board, NFC reader, reed switches, relay interface, and light scanner board." class="project-figure__image" loading="lazy" decoding="async" data-lightbox-standalone>
+<figcaption class="project-figure__caption">Diagram showing the main board, NFC reader, reed switch inputs, ignition relay, and optional light scanner board.</figcaption>
+</figure>
+<p>A separate light scanner board provides visual system feedback through an LED light bar. This module is not required for the ignition system to operate and was designed as an independent auxiliary board.</p>
+<figure class="project-figure">
+<img src="/projects/keyless-motorcycle-ignition-system/figures/scanner-ligh-bike.gif" alt="Ligth bar scanner installed on the motorcycle." class="project-figure__image" loading="lazy" decoding="async" data-lightbox-standalone>
+<figcaption class="project-figure__caption">This is the light bar scanner in action. It was installed on the front speedometer cover.</figcaption>
+</figure>
+<p>The system was designed as a set of separate functional modules rather than a single assembly. This made the ignition controller easier to test on the bench, simplified installation on the motorcycle, and allowed extra features such as the light scanner to be removed or modified without affecting the core ignition system.</p>
+<h2>Electrical Design</h2>
+<p>Because the system is connected directly to the motorcycle electrical system, the main board was designed to tolerate electrical noise, voltage spikes, and other transients. The power input includes a fuse, ferrite beads, decoupling capacitors, reverse-polarity protection, and a bidirectional TVS diode to help protect the electronics from high-voltage events. Relay outputs also include flyback suppression to reduce voltage spikes generated by the relay coils.</p>
+<div class="project-gallery" data-gallery>
+<div class="project-gallery__viewport">
+<figure class="project-gallery__item" data-gallery-item>
+<img src="/projects/keyless-motorcycle-ignition-system/figures/circuit-protection.jpg" alt="Automotive input protection and transient suppression circuit." class="project-gallery__image" loading="lazy" decoding="async" data-lightbox-image>
+<figcaption class="project-gallery__caption">Automotive input protection and transient suppression. The fuse is not shown here.</figcaption>
+</figure>
+<figure class="project-gallery__item" data-gallery-item>
+<img src="/projects/keyless-motorcycle-ignition-system/figures/power-control.jpg" alt="MOSFET-based soft-latching power-control circuit." class="project-gallery__image" loading="lazy" decoding="async" data-lightbox-image>
+<figcaption class="project-gallery__caption">Soft-latching power-control circuit using P-channel and N-channel MOSFETs.</figcaption>
+</figure>
+<figure class="project-gallery__item" data-gallery-item>
+<img src="/projects/keyless-motorcycle-ignition-system/figures/power-supply.jpg" alt="LM2574 5 V switching regulator and LC filter." class="project-gallery__image" loading="lazy" decoding="async" data-lightbox-image>
+<figcaption class="project-gallery__caption">LM2574 5 V switching regulator with an LC output filter.</figcaption>
+</figure>
+<div class="project-gallery__controls" data-gallery-controls hidden>
+<button class="project-gallery__button project-gallery__button--previous" type="button" data-gallery-previous aria-label="Show previous image"></button>
+<span class="project-gallery__counter" data-gallery-counter aria-live="polite"></span>
+<button class="project-gallery__button project-gallery__button--next" type="button" data-gallery-next aria-label="Show next image"></button>
+</div>
+</div>
+</div>
+<p>A major part of the circuit is the power-control stage. A P-channel MOSFET acts as the main high-side switch for the system. Pressing the brake pedal closes the reed switch and momentarily turns this MOSFET on. Once the ATmega328P starts, it drives a second N-channel MOSFET that keeps the main switch on after the brake pedal is released. This allows the firmware to completely shut down the board when the system is no longer needed.</p>
+<p>The 5 V rail is generated using an LM2574 switching regulator. I originally considered a linear regulator, but during prototyping it became inefficient and noticeably hot even at relatively low current. The switching regulator greatly reduced the power loss, although it introduced more switching noise, so an LC filter was added to clean up the output before powering the controller and peripheral electronics.</p>
+<h2>Firmware and Control</h2>
+<p>The firmware is organized around five main operating modes: Disarmed, Armed, Save/Delete Tag, Erase Memory, and Sleep Mode. These modes control how the system responds to NFC tags, manages stored credentials, and transitions between the motorcycle being off, enabled, or running.</p>
+<figure class="project-figure">
+<img src="/projects/keyless-motorcycle-ignition-system/figures/modes-summarized.jpg" alt="Flowchart showing the five operating modes of the keyless ignition system." class="project-figure__image" loading="lazy" decoding="async" data-lightbox-standalone>
+<figcaption class="project-figure__caption">The five main operating modes of the keyless ignition system.</figcaption>
+</figure>
+<p>In normal operation, pressing the brake pedal powers the controller and places the system in the Disarmed state. The NFC reader then checks the scanned tag against the credentials stored in EEPROM. If the tag is authorized, the system enters the Armed state and enables the ignition relay interface. Scanning the authorized tag again shuts the system down.</p>
+<p>NFC credentials are stored in the ATmega328P's internal EEPROM so they are retained when the motorcycle is powered off. Each entry uses eight bytes: one byte indicates whether the slot contains a valid credential, followed by the seven-byte NFC UID. With 1024 bytes of EEPROM available, the system can store up to 128 tags.</p>
+<p>The additional status byte also simplifies searching the EEPROM. The firmware can check the beginning of each eight-byte slot to determine whether a tag is stored there before reading and comparing the seven-byte UID.</p>
+<figure class="project-figure">
+<img src="/projects/keyless-motorcycle-ignition-system/figures/save-tag-EEPROM-flowchart.jpg" alt="Flowchart showing how an NFC tag UID is written to EEPROM." class="project-figure__image" loading="lazy" decoding="async" data-lightbox-standalone>
+<figcaption class="project-figure__caption">Firmware flow for saving a seven-byte NFC UID to EEPROM and marking the memory slot as occupied.</figcaption>
+</figure>
+<p>A master tag provides access to the Save/Delete Tag and Erase Memory modes, allowing credentials to be added or removed without reprogramming the microcontroller.</p>
+<p>The kickstand input is also used for power management. While the motorcycle is running, raising the kickstand places the ATmega328P into its Power-down sleep mode and disables unnecessary peripherals such as the NFC reader and status lights. Lowering the kickstand generates an interrupt that wakes the controller so the system can respond again.</p>
+<h2>PCB, Packaging, and Vehicle Integration</h2>
+<p>The main control board was laid out by separating the circuit into functional areas for power input and protection, power control, voltage regulation, the microcontroller, and external interfaces. Components such as decoupling capacitors and the clock circuit were placed close to the devices they support, while ground pours were used throughout the board.</p>
+<div class="project-gallery" data-gallery>
+<div class="project-gallery__viewport">
+<figure class="project-gallery__item" data-gallery-item>
+<img src="/projects/keyless-motorcycle-ignition-system/figures/main-board-pcb.jpg" alt="Main board PCB populated with all the components." class="project-gallery__image" loading="lazy" decoding="async" data-lightbox-image>
+<figcaption class="project-gallery__caption">Main board PCB populated with all components ready for installation.</figcaption>
+</figure>
+<figure class="project-gallery__item" data-gallery-item>
+<img src="/projects/keyless-motorcycle-ignition-system/figures/PCB-main-floor-planning.png" alt="PCB layout showing the main functional areas of the keyless ignition controller." class="project-gallery__image" loading="lazy" decoding="async" data-lightbox-image>
+<figcaption class="project-gallery__caption">PCB floorplanning showing the main power, control, regulator, microcontroller, and interface sections.</figcaption>
+</figure>
+<figure class="project-gallery__item" data-gallery-item>
+<img src="/projects/keyless-motorcycle-ignition-system/figures/light-scanner-board-pcb.jpg" alt="Light scanner PCB populated with all the components." class="project-gallery__image" loading="lazy" decoding="async" data-lightbox-image>
+<figcaption class="project-gallery__caption">Light scanner board PCB ready for installation. The IC in the center is the CD4017.</figcaption>
+</figure>
+<div class="project-gallery__controls" data-gallery-controls hidden>
+<button class="project-gallery__button project-gallery__button--previous" type="button" data-gallery-previous aria-label="Show previous image"></button>
+<span class="project-gallery__counter" data-gallery-counter aria-live="polite"></span>
+<button class="project-gallery__button project-gallery__button--next" type="button" data-gallery-next aria-label="Show next image"></button>
+</div>
+</div>
+</div>
+<p>The controller and auxiliary boards were installed in custom enclosures designed in Fusion 360 and 3D printed. The enclosures use snap-fit covers instead of screws, and several dimensions were adjusted between prints to improve the fit of the PCBs and covers.</p>
+<div class="project-gallery" data-gallery>
+<div class="project-gallery__viewport">
+<figure class="project-gallery__item" data-gallery-item>
+<img src="/projects/keyless-motorcycle-ignition-system/figures/opening-3d-printed-enclosure.jpg" alt="3D printed enclosures for the controller and auxiliary electronics." class="project-gallery__image" loading="lazy" decoding="async" data-lightbox-image>
+<figcaption class="project-gallery__caption">Custom 3D printed enclosures designed for the main board and light scanner board.</figcaption>
+</figure>
+<figure class="project-gallery__item" data-gallery-item>
+<img src="/projects/keyless-motorcycle-ignition-system/figures/pcbs-inside-enclosure.jpg" alt="PCBs installed inside the 3D printed electronics enclosures." class="project-gallery__image" loading="lazy" decoding="async" data-lightbox-image>
+<figcaption class="project-gallery__caption">PCBs installed inside the finished enclosures.</figcaption>
+</figure>
+<figure class="project-gallery__item" data-gallery-item>
+<img src="/projects/keyless-motorcycle-ignition-system/figures/boards-enclosure-ready-installation.jpg" alt="Main and Light scanner board ready for installation" class="project-gallery__image" loading="lazy" decoding="async" data-lightbox-image>
+<figcaption class="project-gallery__caption">Main board and light scanner board enclosures with their respective connections, ready for installation on the motorcycle.</figcaption>
+</figure>
+<div class="project-gallery__controls" data-gallery-controls hidden>
+<button class="project-gallery__button project-gallery__button--previous" type="button" data-gallery-previous aria-label="Show previous image"></button>
+<span class="project-gallery__counter" data-gallery-counter aria-live="polite"></span>
+<button class="project-gallery__button project-gallery__button--next" type="button" data-gallery-next aria-label="Show next image"></button>
+</div>
+</div>
+</div>
+<p>The wiring was also designed to be modular. Molex connectors were used between the main controller, NFC reader, reed switches, relay interface, and light scanner so individual parts could be disconnected for testing or replacement without removing the complete system.</p>
+<figure class="project-figure">
+<img src="/projects/keyless-motorcycle-ignition-system/figures/bike-cable-connectors-diagram.jpg" alt="Diagram showing the Molex Mini Fit connectors used on the motorcycle." class="project-figure__image" loading="lazy" decoding="async" data-lightbox-standalone>
+<figcaption class="project-figure__caption">Diagram showing the Molex Mini Fit connectors used on the motorcycle.</figcaption>
+</figure>
+<p>Before installing the system on the motorcycle, the complete hardware was assembled on the bench using a 12 V power supply. This allowed the controller, NFC reader, reed switches, relay interface, and light scanner to be tested together and made troubleshooting much easier before working with the motorcycle wiring.</p>
+<div class="project-gallery" data-gallery>
+<div class="project-gallery__viewport">
+<figure class="project-gallery__item" data-gallery-item>
+<img src="/projects/keyless-motorcycle-ignition-system/figures/system-wiring-setup-on-desk.png" alt="Complete keyless ignition system assembled for bench testing." class="project-gallery__image" loading="lazy" decoding="async" data-lightbox-image>
+<figcaption class="project-gallery__caption">Complete system assembled and tested on the bench before installation on the motorcycle.</figcaption>
+</figure>
+<figure class="project-gallery__item" data-gallery-item>
+<img src="/projects/keyless-motorcycle-ignition-system/figures/bike-cable-routing-diagram.png" alt="Diagram showing the routing of the keyless ignition wiring on the motorcycle." class="project-gallery__image" loading="lazy" decoding="async" data-lightbox-image>
+<figcaption class="project-gallery__caption">Diagram showing the cable routing and module placement on the motorcycle.</figcaption>
+</figure>
+<div class="project-gallery__controls" data-gallery-controls hidden>
+<button class="project-gallery__button project-gallery__button--previous" type="button" data-gallery-previous aria-label="Show previous image"></button>
+<span class="project-gallery__counter" data-gallery-counter aria-live="polite"></span>
+<button class="project-gallery__button project-gallery__button--next" type="button" data-gallery-next aria-label="Show next image"></button>
+</div>
+</div>
+</div>
+<p>During installation, the original ignition switch was kept operational as a backup. The keyless system was connected through the relay interface to bypass the required ignition circuits when an authorized NFC tag was used, without removing the original keyed ignition.</p>
+<h2>Results</h2>
+<p>The completed system was installed on the motorcycle and used regularly for several months. The NFC ring could be used to enable and disable the ignition as intended, while the original keyed ignition remained available as a backup.</p>
+<p>On my motorcycle, the NFC reader was installed inside the main board enclosure in the saddlebag, which provides easy access when scanning the ring.</p>
+<figure class="project-figure">
+<img src="/projects/keyless-motorcycle-ignition-system/figures/final-ring-demo.gif" alt="Demo of the keyless ignition system operating on the motorcycle using an NFC ring." class="project-figure__image" loading="lazy" decoding="async" data-lightbox-standalone>
+<figcaption class="project-figure__caption">Demo of the completed keyless ignition system operating on the motorcycle with the NFC ring.</figcaption>
+</figure>
+<p>The power control design also achieved the main goal of avoiding continuous battery drain while the motorcycle was off. The controller and NFC reader remain unpowered until the brake pedal is pressed, and the firmware can shut the system back down when it is no longer needed.</p>
+<p>The final installation combined the custom controller, NFC reader, reed-switch inputs, relay(s), light scanner, wiring, and 3D printed enclosures into a complete system that could be serviced or modified as separate modules.</p>
+
+    </div>
+
+  </div>
+
+</article>
+
+
+
+    </main>
+
+
+    
+
+
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-column">
+      <div class="footer-brand-name">Cristian A. Guzman</div>
+
+      <p class="footer-description">
+        Electrical & Mechatronic Engineering
+      </p>
+    </div>
+
+    
+      <div class="footer-column">
+        <h2 class="footer-heading">Connect</h2>
+
+        <ul class="footer-links">
+          
+            <li>
+              <a href="/contact/" data-email-open>Email</a>
+            </li>
+          
+
+          
+            <li>
+              <a href="https://www.linkedin.com/in/cristi4n-guzman/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+            </li>
+          
+
+          
+            <li>
+              <a href="https://github.com/Cristian-Ariel" target="_blank" rel="me noopener noreferrer">GitHub</a>
+            </li>
+          
+        </ul>
+      </div>
+    
+
+    <div class="footer-column">
+      <h2 class="footer-heading">Navigate</h2>
+
+      <ul class="footer-links">
+        <li><a href="/projects/">Engineering Projects</a></li>
+        <li><a href="/art/">Art</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+
+    
+      <div class="footer-quote-container">
+        <p class="quote-text">“Then one day something whispered &quot;follow me&quot; 
+One life, one strike to follow something real
+Once there was something hidden within me 
+Stardust to dust, a tapestry in between”</p>
+
+        <p class="quote-author">
+          — Nightwish
+        </p>
+      </div>
+    
+
+    <p class="footer-copyright">
+      &copy; 2026 Cristian A. Guzman
+    </p>
+
+  </div>
+</footer>
+
+
+  </div>
+
+
+  <!--
+    Shared project-image lightbox.
+
+    The lightbox is included once at the site-layout level instead of
+    creating a separate lightbox for every project image or gallery.
+
+    JavaScript copies the selected image into this shared lightbox.
+
+    Gallery images can use the Previous / Next controls, while standalone
+    images such as the project hero or individual figures automatically
+    hide those controls.
+
+    The Full Resolution link opens the currently displayed original image
+    in a new browser tab so the browser can provide its native zooming and
+    panning behavior.
+  -->
+
+  <div
+    class="lightbox"
+    data-lightbox
+    hidden
+    aria-hidden="true"
+  >
+
+    <div
+      class="lightbox__backdrop"
+      data-lightbox-close
+    ></div>
+
+
+    <div
+      class="lightbox__content"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Expanded project image"
+    >
+
+      <a
+        class="lightbox__full-resolution"
+        data-lightbox-full-resolution
+        href=""
+        target="_blank"
+        rel="noopener"
+        aria-label="Open full-resolution image in a new tab"
+        hidden
+      >
+        Full resolution
+        <span aria-hidden="true">↗</span>
+      </a>
+
+
+      <button
+        class="lightbox__close"
+        type="button"
+        data-lightbox-close
+        aria-label="Close expanded image"
+      ></button>
+
+
+      <button
+        class="lightbox__button lightbox__button--previous"
+        type="button"
+        data-lightbox-previous
+        aria-label="Show previous image"
+        hidden
+      ></button>
+
+
+      <span
+        class="lightbox__counter"
+        data-lightbox-counter
+        aria-live="polite"
+        hidden
+      ></span>
+
+
+      <button
+        class="lightbox__button lightbox__button--next"
+        type="button"
+        data-lightbox-next
+        aria-label="Show next image"
+        hidden
+      ></button>
+
+
+      <img
+        class="lightbox__image"
+        data-lightbox-expanded-image
+        src=""
+        alt=""
+      >
+
+    </div>
+
+  </div>
+
+  <dialog
+  class="email-modal"
+  data-email-modal
+  aria-labelledby="email-modal-title"
+>
+  <div class="email-modal__panel">
+
+    <button
+      class="email-modal__close"
+      type="button"
+      data-email-close
+      aria-label="Close email window"
+    >
+      ×
+    </button>
+
+    <h2
+      class="email-modal__title"
+      id="email-modal-title"
+    >
+      Email
+    </h2>
+
+    <p class="email-modal__text">
+      You can copy my email address below.
+    </p>
+
+    <div class="email-modal__address-row">
+
+      <span
+        class="email-modal__address"
+        data-email-address
+      ></span>
+
+      <button
+        class="button button--accent email-modal__copy"
+        type="button"
+        data-email-copy
+      >
+        Copy Email
+      </button>
+
+    </div>
+
+    <p
+      class="email-modal__status"
+      data-email-status
+      aria-live="polite"
+    ></p>
+
+  </div>
+</dialog>
+
+  <script
+    src="/assets/js/navigation.js"
+    defer
+  ></script>
+
+  <script
+    src="/assets/js/gallery.js"
+    defer
+  ></script>
+
+    <script
+  src="/assets/js/email-modal.js"
+  defer
+></script>
+
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+/* ========================================================================== 
+   Layout
+   Reusable page widths, spacing, and simple layout primitives.
+   ========================================================================== */
+
+.site-frame {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  min-width: 0;
+  flex: 1;
+}
+
+.container {
+  width: min(calc(100% - 2rem), var(--container-max));
+  margin-inline: auto;
+}
+
+.prose {
+  max-width: var(--text-max);
+}
+
+.page-section {
+  padding-block: var(--space-section);
+}
+
+.page-section + .page-section {
+  border-top: 1px solid var(--color-border);
+}
+
+.page-heading {
+  margin-bottom: var(--space-md);
+}
+
+.page-intro {
+  max-width: var(--text-max);
+  color: var(--color-muted);
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+}

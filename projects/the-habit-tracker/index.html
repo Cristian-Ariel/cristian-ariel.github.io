@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <meta name="color-scheme" content="light">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="/assets/icons/site-favicon.png"
+  >
+
+  <meta
+    name="description"
+    content="A microcontroller-based device for building habits by tracking progress across multiple goals with day counters.
+"
+  >
+
+  <title>
+    The Habit Tracker | Cristian A. Guzman
+  </title>
+
+  <script>
+    document.documentElement.classList.add("js");
+  </script>
+
+  <link
+    rel="stylesheet"
+    href="/assets/css/style.css"
+  >
+</head>
+
+
+<body>
+
+  <a
+    class="skip-link"
+    href="#main-content"
+  >
+    Skip to content
+  </a>
+
+
+  <div class="site-frame">
+
+    <header class="site-header">
+  <div class="navigation-inner container">
+
+    <a class="branding" href="/" aria-label="Cristian A. Guzman homepage">
+  <svg class="brand-logo" aria-hidden="true">
+    <use href="/assets/images/global/logo-nav-bar-plain.svg#logo-navigation-bar"></use>
+  </svg>
+
+  <span class="brand-text">
+    <span class="brand-name">Cristian A. Guzman</span>
+    <span class="brand-subtitle">
+      Electrical &amp; Mechatronic Engineering
+    </span>
+  </span>
+</a>
+
+    <button
+      class="navigation-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="primary-navigation"
+      aria-label="Open navigation menu"
+      data-navigation-toggle>
+      <span class="navigation-toggle-icon" aria-hidden="true"></span>
+    </button>
+
+    <nav
+      id="primary-navigation"
+      class="site-navigation"
+      aria-label="Primary navigation"
+      data-navigation
+      data-open="false">
+      <ul class="navigation-links">
+        <li>
+          <a href="/">
+            Home
+          </a>
+        </li>
+
+        <li>
+          <a href="/projects/" aria-current="page">
+            Engineering Projects
+          </a>
+        </li>
+
+        <li>
+          <a href="/art/">
+            Art
+          </a>
+        </li>
+
+        <li>
+          <a href="/about/">
+            About
+          </a>
+        </li>
+
+        <li>
+          <a href="/contact/">
+            Contact
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<button
+  class="navigation-backdrop"
+  type="button"
+  aria-label="Close navigation menu"
+  data-navigation-backdrop
+  hidden>
+</button>
+
+
+    <main id="main-content">
+      
+<article class="container section">
+
+  <div class="project-page">
+
+    <header class="project-header">
+
+      <h1 class="project-header__title">
+        The Habit Tracker
+      </h1>
+
+      <p class="project-header__date">
+        March 2020
+      </p>
+
+      <p class="project-header__summary">
+        A microcontroller-based device for building habits by tracking progress across multiple goals with day counters.
+
+      </p>
+
+    </header>
+
+
+    <figure class="project-hero">
+      <img
+        src="/projects/the-habit-tracker/figures/habit-tracker-hero.jpg"
+        alt="The Habit Tracker"
+        class="project-hero__image"
+        decoding="async"
+        fetchpriority="high"
+        data-lightbox-standalone
+      >
+    </figure>
+
+
+    
+
+
+    <div class="prose project-body">
+      <h2>Overview</h2>
+<p>The Habit Tracker is a small embedded device I built to keep track of progress toward several habits. The idea came after reading <em>Atomic Habits</em> by James Clear,</p>
+<blockquote>
+<p>“Recording your last action creates a trigger that can initiate your next one. Habit tracking naturally builds a series of visual cues like the streak of X's on your calendar or the list of meals in your food log. When you look at the calendar and see your streak, you'll be reminded to act again . . . The mere act of tracking a behavior can spark the urge to change it.”</p>
+<p>— James Clear</p>
+</blockquote>
+<figure class="project-figure">
+<img src="/projects/the-habit-tracker/figures/holding-atomics-book.jpg" alt="Holding the book Atomic Habits by James Clear." class="project-figure__image" loading="lazy" decoding="async" data-lightbox-standalone>
+<figcaption class="project-figure__caption">This is the book that inspired the project, I hightly recommend it.</figcaption>
+</figure>
+<p>Instead of using a phone or an app, I wanted a simple physical device that could sit on a desk and provide a quick way to record progress. Nothing fancy. Each habit has its own day counter, and the values are stored in nonvolatile memory so they are retained when the device is powered off.</p>
+<p>The project involved circuit design, embedded firmware, PCB assembly, user interface design, CAD, and 3D printing.</p>
+<h2>Hardware and User Interface</h2>
+<p>The system is built around an ATmega328P microcontroller and a 16×2 character LCD connected through I²C. Four push buttons provide the complete user interface.</p>
+<figure class="project-figure">
+<img src="/projects/the-habit-tracker/figures/lcd-back-close-up.jpg" alt="Disassembled enclosure showing the LCD and internal wiring.." class="project-figure__image" loading="lazy" decoding="async" data-lightbox-standalone>
+<figcaption class="project-figure__caption">The LCD is mounted on the front panel and controlled by the main board using I²C.</figcaption>
+</figure>
+<p>The left and right buttons move between the different habits, while the up and down buttons increase or decrease the day counter for the currently selected habit. The menu wraps around in both directions, so moving past the first or last entry automatically continues from the opposite end.</p>
+<div class="project-gallery" data-gallery>
+<div class="project-gallery__viewport">
+<figure class="project-gallery__item" data-gallery-item>
+<img src="/projects/the-habit-tracker/figures/habit-tracker-screen-1.jpg" alt="Habit tracker facing toward front, displaying the message wake up by 5:05." class="project-gallery__image" loading="lazy" decoding="async" data-lightbox-image>
+<figcaption class="project-gallery__caption">The left and right buttons cycle through the different &quot;habits&quot;.</figcaption>
+</figure>
+<figure class="project-gallery__item" data-gallery-item>
+<img src="/projects/the-habit-tracker/figures/pushing-button.jpg" alt="Habit tracker facing toward front, displaying the message learn Freecad, and pressing the up button." class="project-gallery__image" loading="lazy" decoding="async" data-lightbox-image>
+<figcaption class="project-gallery__caption">The up and down buttons increase or decrease the day counter for the selected &quot;habit&quot;.</figcaption>
+</figure>
+<figure class="project-gallery__item" data-gallery-item>
+<img src="/projects/the-habit-tracker/figures/habit-tracker-screen-2.jpg" alt="Habit tracker facing toward front, displaying the message study progm." class="project-gallery__image" loading="lazy" decoding="async" data-lightbox-image>
+<figcaption class="project-gallery__caption">New &quot;habits&quot; can be added by changing the list in firmware before programming the microcontroller.</figcaption>
+</figure>
+<div class="project-gallery__controls" data-gallery-controls hidden>
+<button class="project-gallery__button project-gallery__button--previous" type="button" data-gallery-previous aria-label="Show previous image"></button>
+<span class="project-gallery__counter" data-gallery-counter aria-live="polite"></span>
+<button class="project-gallery__button project-gallery__button--next" type="button" data-gallery-next aria-label="Show next image"></button>
+</div>
+</div>
+</div>
+<p>In my case, some of the habits I configured in firmware to track were:</p>
+<ul>
+<li>Wake up by 5:05</li>
+<li>Study Math</li>
+<li>Learn FreeCAD</li>
+<li>Read a book</li>
+<li>Study Programming</li>
+</ul>
+<p>Each habit is displayed on the first row of the LCD, while its current day count is shown on the second row.</p>
+<h2>Firmware and Data Storage</h2>
+<p>The firmware organizes the habit names and their corresponding counters using arrays, allowing the same menu and counter logic to be reused for every habit instead of implementing separate code for each one.</p>
+<p>Push-button inputs are debounced in software using <code>millis()</code>. This allows the controller to reject the short electrical transitions produced when a mechanical button is pressed without relying on long blocking delays in the main program loop.</p>
+<p>Whenever a counter is changed, the updated array is stored in the ATmega328P's internal EEPROM. During startup, the firmware reads the saved values back from EEPROM before displaying the first habit. This allows the tracker to retain its progress even after power is removed.</p>
+<p>The counters can also be decreased if a correction is needed, but the firmware prevents a value from going below zero.</p>
+<p>When powered on, the LCD first displays a short startup screen showing the name &quot;The Habit Tracker&quot; before entering the main screen.</p>
+<h2>Enclosure and Assembly</h2>
+<p>A custom enclosure was designed in FreeCAD and 3D printed to hold the electronics, LCD, and control buttons in a compact desktop unit.</p>
+<figure class="project-figure">
+<img src="/projects/the-habit-tracker/figures/habit-tracker-3d-model.png" alt="Screenshot of CAD model designed in FreeCAD." class="project-figure__image" loading="lazy" decoding="async" data-lightbox-standalone>
+<figcaption class="project-figure__caption">CAD model of the enclosure designed in FreeCAD..</figcaption>
+</figure>
+<p>The front panel provides access to the display and four navigation buttons, allowing the tracker to be operated without opening the enclosure.</p>
+<div class="project-gallery" data-gallery>
+<div class="project-gallery__viewport">
+<figure class="project-gallery__item" data-gallery-item>
+<img src="/projects/the-habit-tracker/figures/enclosure-close-up-1.jpg" alt="Side close up of the enclosure." class="project-gallery__image" loading="lazy" decoding="async" data-lightbox-image>
+<figcaption class="project-gallery__caption">Final assembly of the enclosure viewed from the side.</figcaption>
+</figure>
+<figure class="project-gallery__item" data-gallery-item>
+<img src="/projects/the-habit-tracker/figures/habit-tracker-inside-enclosure.jpg" alt="Internal wiring, LCD and main board shown mounted inside the enclosure." class="project-gallery__image" loading="lazy" decoding="async" data-lightbox-image>
+<figcaption class="project-gallery__caption">Internal wiring, LCD and main board shown mounted inside the enclosure.</figcaption>
+</figure>
+<figure class="project-gallery__item" data-gallery-item>
+<img src="/projects/the-habit-tracker/figures/enclosure-close-up-2.jpg" alt="Front close up of the enclosure" class="project-gallery__image" loading="lazy" decoding="async" data-lightbox-image>
+<figcaption class="project-gallery__caption">Final assembly of the enclosure viewed from the front.</figcaption>
+</figure>
+<div class="project-gallery__controls" data-gallery-controls hidden>
+<button class="project-gallery__button project-gallery__button--previous" type="button" data-gallery-previous aria-label="Show previous image"></button>
+<span class="project-gallery__counter" data-gallery-counter aria-live="polite"></span>
+<button class="project-gallery__button project-gallery__button--next" type="button" data-gallery-next aria-label="Show next image"></button>
+</div>
+</div>
+</div>
+<p>The electronics and mechanical design were developed together so the PCB, display, buttons, and enclosure could be assembled into a single self-contained device.</p>
+<h2>Results</h2>
+<p>The completed Habit Tracker provided a simple physical interface for monitoring several habits without relying on a phone or computer. The menu buttons made it possible to quickly move between habits and update their counters, while EEPROM storage preserved the data between uses.</p>
+
+    </div>
+
+  </div>
+
+</article>
+
+
+
+    </main>
+
+
+    
+
+
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-column">
+      <div class="footer-brand-name">Cristian A. Guzman</div>
+
+      <p class="footer-description">
+        Electrical & Mechatronic Engineering
+      </p>
+    </div>
+
+    
+      <div class="footer-column">
+        <h2 class="footer-heading">Connect</h2>
+
+        <ul class="footer-links">
+          
+            <li>
+              <a href="/contact/" data-email-open>Email</a>
+            </li>
+          
+
+          
+            <li>
+              <a href="https://www.linkedin.com/in/cristi4n-guzman/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+            </li>
+          
+
+          
+            <li>
+              <a href="https://github.com/Cristian-Ariel" target="_blank" rel="me noopener noreferrer">GitHub</a>
+            </li>
+          
+        </ul>
+      </div>
+    
+
+    <div class="footer-column">
+      <h2 class="footer-heading">Navigate</h2>
+
+      <ul class="footer-links">
+        <li><a href="/projects/">Engineering Projects</a></li>
+        <li><a href="/art/">Art</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+
+    
+      <div class="footer-quote-container">
+        <p class="quote-text">“Look again at that dot. That&#39;s here. That&#39;s home. That&#39;s us. On it everyone you love, everyone you know, everyone you ever heard of, every human being who ever was, lived out their lives. The aggregate of our joy and suffering, thousands of confident religions, ideologies, and economic doctrines, every hunter and forager, every hero and coward, every creator and destroyer of civilization, every king and peasant, every young couple in love, every mother and father, hopeful child, inventor and explorer, every teacher of morals, every corrupt politician, every &quot;superstar,&quot; every &quot;supreme leader,&quot; every saint and sinner in the history of our species lived there — on a mote of dust suspended in a sunbeam.”</p>
+
+        <p class="quote-author">
+          — Carl Sagan
+        </p>
+      </div>
+    
+
+    <p class="footer-copyright">
+      &copy; 2026 Cristian A. Guzman
+    </p>
+
+  </div>
+</footer>
+
+
+  </div>
+
+
+  <!--
+    Shared project-image lightbox.
+
+    The lightbox is included once at the site-layout level instead of
+    creating a separate lightbox for every project image or gallery.
+
+    JavaScript copies the selected image into this shared lightbox.
+
+    Gallery images can use the Previous / Next controls, while standalone
+    images such as the project hero or individual figures automatically
+    hide those controls.
+
+    The Full Resolution link opens the currently displayed original image
+    in a new browser tab so the browser can provide its native zooming and
+    panning behavior.
+  -->
+
+  <div
+    class="lightbox"
+    data-lightbox
+    hidden
+    aria-hidden="true"
+  >
+
+    <div
+      class="lightbox__backdrop"
+      data-lightbox-close
+    ></div>
+
+
+    <div
+      class="lightbox__content"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Expanded project image"
+    >
+
+      <a
+        class="lightbox__full-resolution"
+        data-lightbox-full-resolution
+        href=""
+        target="_blank"
+        rel="noopener"
+        aria-label="Open full-resolution image in a new tab"
+        hidden
+      >
+        Full resolution
+        <span aria-hidden="true">↗</span>
+      </a>
+
+
+      <button
+        class="lightbox__close"
+        type="button"
+        data-lightbox-close
+        aria-label="Close expanded image"
+      ></button>
+
+
+      <button
+        class="lightbox__button lightbox__button--previous"
+        type="button"
+        data-lightbox-previous
+        aria-label="Show previous image"
+        hidden
+      ></button>
+
+
+      <span
+        class="lightbox__counter"
+        data-lightbox-counter
+        aria-live="polite"
+        hidden
+      ></span>
+
+
+      <button
+        class="lightbox__button lightbox__button--next"
+        type="button"
+        data-lightbox-next
+        aria-label="Show next image"
+        hidden
+      ></button>
+
+
+      <img
+        class="lightbox__image"
+        data-lightbox-expanded-image
+        src=""
+        alt=""
+      >
+
+    </div>
+
+  </div>
+
+  <dialog
+  class="email-modal"
+  data-email-modal
+  aria-labelledby="email-modal-title"
+>
+  <div class="email-modal__panel">
+
+    <button
+      class="email-modal__close"
+      type="button"
+      data-email-close
+      aria-label="Close email window"
+    >
+      ×
+    </button>
+
+    <h2
+      class="email-modal__title"
+      id="email-modal-title"
+    >
+      Email
+    </h2>
+
+    <p class="email-modal__text">
+      You can copy my email address below.
+    </p>
+
+    <div class="email-modal__address-row">
+
+      <span
+        class="email-modal__address"
+        data-email-address
+      ></span>
+
+      <button
+        class="button button--accent email-modal__copy"
+        type="button"
+        data-email-copy
+      >
+        Copy Email
+      </button>
+
+    </div>
+
+    <p
+      class="email-modal__status"
+      data-email-status
+      aria-live="polite"
+    ></p>
+
+  </div>
+</dialog>
+
+  <script
+    src="/assets/js/navigation.js"
+    defer
+  ></script>
+
+  <script
+    src="/assets/js/gallery.js"
+    defer
+  ></script>
+
+    <script
+  src="/assets/js/email-modal.js"
+  defer
+></script>
+
+</body>
+
+</html>

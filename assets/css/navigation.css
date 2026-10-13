@@ -1,0 +1,790 @@
+/* ==========================================================================
+   Navigation
+
+   Responsive site navigation.
+
+   Design decisions:
+   - The brand consists of the site logo, name, and engineering subtitle.
+   - The name and logo use the site's aqua accent at rest.
+   - The subtitle remains white at rest for strong contrast and hierarchy.
+   - On genuine mouse/trackpad hover, the brand receives a neon interaction
+     treatment and the subtitle gets a subtle moving reflection effect.
+   - The reflection animation is intentionally disabled on touch devices to
+     avoid sticky/emulated hover states.
+   - Keyboard users receive an equivalent static highlight without animation.
+   - Users who prefer reduced motion never receive movement-based effects.
+
+   Mobile:
+   - Branding and menu button share the top row.
+   - Navigation links open in a dropdown drawer.
+   - The engineering subtitle remains visible on normal mobile widths.
+   - Very narrow screens hide the subtitle to preserve horizontal space.
+   - The navbar intentionally overrides the site's normal .container gutter
+     so the branding sits closer to the left edge.
+
+   Desktop:
+   - Branding stays on the left.
+   - Navigation links are displayed horizontally on the right.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   Site Header
+   ========================================================================== */
+
+   .site-header {
+    position: sticky;
+    top: 0;
+  
+    z-index: 1000;
+  
+    background: var(--color-navigation);
+    color: var(--color-on-dark);
+  
+    box-shadow: 0 1px 0 rgb(255 255 255 / 0.08);
+  }
+  
+  
+  /* ==========================================================================
+     Mobile Navigation Backdrop
+     ========================================================================== */
+  
+  .navigation-backdrop {
+    position: fixed;
+    inset: 0;
+  
+    z-index: 900;
+  
+    padding: 0;
+  
+    border: 0;
+  
+    background: rgb(0 0 0 / 0.55);
+  
+    backdrop-filter: blur(2px);
+  
+    cursor: pointer;
+  }
+  
+  .navigation-backdrop[hidden] {
+    display: none;
+  }
+  
+  
+  /* ==========================================================================
+     Navigation Layout
+     ========================================================================== */
+  
+  .navigation-inner {
+    display: grid;
+  
+    grid-template-columns: 1fr auto;
+  
+    align-items: center;
+    gap: var(--space-sm);
+  
+    min-height: 4.25rem;
+  
+    padding-block: 0.5rem;
+  }
+  
+  
+  /* ==========================================================================
+     Branding
+     ========================================================================== */
+  
+  /*
+    The entire branding area links back to the homepage.
+  
+    Structure:
+  
+    [ Logo ]  Cristian A. Guzman
+              Electrical & Mechatronic Engineering
+  */
+  
+  .branding {
+    display: flex;
+  
+    width: fit-content;
+    min-width: 0;
+  
+    align-items: center;
+    gap: 0.1rem;
+  
+    color: var(--color-on-dark);
+  
+    text-decoration: none;
+  }
+  
+  .branding:visited {
+    color: var(--color-on-dark);
+  }
+  
+  .branding:hover,
+  .branding:focus-visible {
+    text-decoration: none;
+  }
+  
+  
+  /* ==========================================================================
+     Branding Logo
+     ========================================================================== */
+  
+  .brand-logo {
+    display: block;
+  
+    flex: 0 0 auto;
+  
+    width: 3.75rem;
+    height: 2.1rem;
+  
+    color: var(--color-accent);
+  
+    transform: scale(1.3);
+    transform-origin: center;
+  
+    transition: filter 0.2s ease;
+  }
+  
+  
+  /* ==========================================================================
+     Branding Text
+     ========================================================================== */
+  
+  .brand-text {
+    display: flex;
+  
+    min-width: 0;
+  
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  
+  
+  /* Main site / personal brand name. */
+  
+  .brand-name {
+    overflow: hidden;
+  
+    color: var(--color-accent);
+  
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 1;
+  
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  
+    transition:
+      color 0.2s ease,
+      text-shadow 0.2s ease;
+  }
+  
+  
+  /*
+    Engineering subtitle.
+  
+    White is intentionally used instead of muted gray because:
+    - the subtitle is very small;
+    - white provides better readability against the dark navbar;
+    - its smaller size and lighter weight already establish hierarchy beneath
+      the aqua name.
+  */
+  
+  .brand-subtitle {
+    display: block;
+  
+    color: var(--color-on-dark);
+  
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+  
+    white-space: nowrap;
+  
+    transition:
+      color 0.2s ease,
+      text-shadow 0.2s ease;
+  }
+  
+  
+  /* ==========================================================================
+     Keyboard Focus Branding Effect
+     ========================================================================== */
+  
+  /*
+    Keyboard focus receives a strong but static visual treatment.
+  
+    The moving shimmer is deliberately NOT used here because keyboard focus may
+    remain on the link for an extended time and continuous movement would be
+    unnecessarily distracting.
+  */
+  
+  .branding:focus-visible .brand-name,
+  .branding:focus-visible .brand-subtitle {
+    color: var(--color-accent);
+  
+    text-shadow:
+      0 0 2px var(--brand-glow),
+      0 0 10px var(--brand-glow-soft);
+  }
+  
+  .branding:focus-visible .brand-logo {
+    filter:
+      drop-shadow(0 0 10px var(--brand-glow))
+      drop-shadow(0 0 20px var(--brand-glow-soft));
+  }
+  
+  
+  /* ==========================================================================
+     Mouse / Trackpad Hover Branding Effect
+     ========================================================================== */
+  
+  /*
+    Only devices that genuinely support hover and have a precise pointer receive
+    the animated branding effect.
+  
+    This prevents mobile browsers from emulating :hover after a tap and leaving
+    the shimmer or glow stuck on-screen.
+  */
+  
+  @media (hover: hover) and (pointer: fine) {
+  
+    .branding:hover .brand-name {
+      color: var(--color-accent);
+  
+      text-shadow:
+        0 0 2px var(--brand-glow),
+        0 0 10px var(--brand-glow-soft);
+    }
+  
+    .branding:hover .brand-logo {
+      filter:
+        drop-shadow(0 0 10px var(--brand-glow))
+        drop-shadow(0 0 20px var(--brand-glow-soft));
+    }
+  
+  
+    /*
+      Subtitle reflection effect.
+  
+      A narrow white highlight travels continuously from left to right and then
+      reverses naturally back toward the left while the user keeps hovering.
+  
+      background-repeat: no-repeat is essential. Without it, the gradient can
+      visually wrap around and appear to "teleport" from one edge to the other.
+    */
+  
+    .branding:hover .brand-subtitle {
+      background:
+        linear-gradient(
+          110deg,
+          var(--color-accent) 0%,
+          var(--color-accent) 43%,
+          #ffffff 50%,
+          var(--color-accent) 57%,
+          var(--color-accent) 100%
+        );
+  
+      background-size: 250% 100%;
+      background-position: 100% 0;
+      background-repeat: no-repeat;
+  
+      color: transparent;
+  
+      -webkit-background-clip: text;
+      background-clip: text;
+  
+      -webkit-text-fill-color: transparent;
+  
+      animation:
+        brand-subtitle-shimmer
+        2.2s
+        ease-in-out
+        infinite
+        alternate;
+    }
+  }
+  
+  
+  /*
+    Reflection movement.
+  
+    Because the animation uses "alternate", CSS automatically reverses the same
+    path after each pass:
+  
+        left -> right -> left -> right ...
+  
+    This avoids restarting the highlight from the opposite edge.
+  */
+  
+  @keyframes brand-subtitle-shimmer {
+    from {
+      background-position: 100% 0;
+    }
+  
+    to {
+      background-position: 0% 0;
+    }
+  }
+  
+  
+  /* ==========================================================================
+     Mobile Menu Button
+     ========================================================================== */
+  
+  .navigation-toggle {
+    display: none;
+  
+    width: 2.75rem;
+    height: 2.75rem;
+  
+    align-items: center;
+    justify-content: center;
+  
+    border: 1px solid rgb(255 255 255 / 0.3);
+    border-radius: var(--radius-sm);
+  
+    background: transparent;
+    color: var(--color-on-dark);
+  
+    cursor: pointer;
+  }
+  
+  
+  /*
+    JavaScript progressively enhances the navigation and displays the menu
+    button. Without JavaScript, the navigation links remain available.
+  */
+  
+  .js .navigation-toggle {
+    display: inline-flex;
+  }
+  
+  .navigation-toggle:hover {
+    border-color: var(--color-accent);
+  
+    color: var(--color-accent);
+  }
+  
+  
+  /* ==========================================================================
+     Hamburger / Close Icon
+     ========================================================================== */
+  
+  .navigation-toggle-icon,
+  .navigation-toggle-icon::before,
+  .navigation-toggle-icon::after {
+    display: block;
+  
+    width: 1.25rem;
+    height: 0.125rem;
+  
+    border-radius: 999px;
+  
+    background: currentColor;
+  
+    content: "";
+  
+    transition:
+      transform 160ms ease,
+      opacity 160ms ease;
+  }
+  
+  .navigation-toggle-icon {
+    position: relative;
+  }
+  
+  .navigation-toggle-icon::before {
+    position: absolute;
+  
+    transform: translateY(-0.4rem);
+  }
+  
+  .navigation-toggle-icon::after {
+    position: absolute;
+  
+    transform: translateY(0.4rem);
+  }
+  
+  
+  /* Transform the hamburger into an X while the navigation is open. */
+  
+  .navigation-toggle[aria-expanded="true"] .navigation-toggle-icon {
+    background: transparent;
+  }
+  
+  .navigation-toggle[aria-expanded="true"] .navigation-toggle-icon::before {
+    transform: rotate(45deg);
+  }
+  
+  .navigation-toggle[aria-expanded="true"] .navigation-toggle-icon::after {
+    transform: rotate(-45deg);
+  }
+  
+  
+  /* ==========================================================================
+     Navigation Links
+     ========================================================================== */
+  
+  .site-navigation {
+    grid-column: 1 / -1;
+  }
+  
+  .navigation-links {
+    display: flex;
+  
+    flex-direction: column;
+    gap: 0;
+  
+    margin: 0;
+    padding: 0.4rem 0 0.75rem;
+  
+    list-style: none;
+  }
+  
+  .navigation-links a {
+    display: block;
+  
+    padding: 0.8rem 0;
+  
+    border-bottom: 1px solid rgb(255 255 255 / 0.12);
+  
+    color: var(--color-on-dark);
+  
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.015em;
+  
+    text-decoration: none;
+  }
+  
+  .navigation-links a:visited {
+    color: var(--color-on-dark);
+  }
+  
+  .navigation-links a:hover,
+  .navigation-links a:focus-visible {
+    color: var(--color-accent);
+  
+    text-decoration: underline;
+  
+    text-shadow:
+      0 0 1px currentColor,
+      0 0 5px currentColor,
+      0 0 1px rgb(0 255 221 / 0.35);
+  }
+  
+  
+  /* Highlight the navigation link for the current page. */
+  
+  .navigation-links a[aria-current="page"] {
+    color: var(--color-accent);
+  }
+  
+  
+  /* ==========================================================================
+     Progressive Enhancement
+     ========================================================================== */
+  
+  /*
+    Without JavaScript, navigation remains visible and usable.
+  
+    Once JavaScript loads, the mobile navigation is hidden until the menu button
+    is activated.
+  */
+  
+  .js .site-navigation {
+    display: none;
+  }
+  
+  .js .site-navigation[data-open="true"] {
+    display: block;
+  }
+  
+  
+  /* ==========================================================================
+     Mobile Navigation
+     ========================================================================== */
+  
+  @media (max-width: 59.99rem) {
+  
+    /*
+      Keep the complete header fixed while the mobile navigation drawer is open.
+    */
+  
+    html.navigation-open .site-header {
+      position: fixed;
+  
+      top: 0;
+      right: 0;
+      left: 0;
+  
+      width: 100%;
+  
+      z-index: 1100;
+    }
+  
+  
+    /*
+      The global .container intentionally creates a 1rem gutter on each side.
+  
+      That spacing works well for normal page content but made the mobile navbar
+      branding appear excessively inset.
+  
+      The navigation therefore overrides the container width only on mobile.
+      Page content elsewhere retains the normal site gutter.
+    */
+  
+    .container.navigation-inner {
+      width: 100%;
+  
+      margin-inline: 0;
+  
+      min-height: 3.6rem;
+  
+      padding-top: 0.25rem;
+      padding-right: 0.75rem;
+      padding-bottom: 0.25rem;
+      padding-left: 0.25rem;
+    }
+  
+  
+    /*
+      Mobile branding remains two lines because it still fits comfortably on
+      normal phone widths and immediately communicates the engineering focus.
+  
+      line-height: 1.2 is intentional. Tighter values such as 1.05 caused glyph
+      descenders (for example the "g" in Engineering) to be visibly clipped
+      during the background-clipped shimmer rendering.
+    */
+  
+    .brand-name {
+      font-size: 1.15rem;
+    }
+  
+    .brand-subtitle {
+      font-size: 0.61rem;
+      line-height: 1.2;
+    }
+  
+  
+    /* Mobile navigation drawer. */
+  
+    .site-navigation {
+      position: absolute;
+  
+      top: 100%;
+      right: 0;
+  
+      width: min(15rem, calc(100vw - 4rem));
+  
+      z-index: 2;
+  
+      background: var(--color-navigation);
+  
+      box-shadow:
+        -0.35rem 0.6rem 1.25rem rgb(0 0 0 / 0.28);
+    }
+  
+    .navigation-links {
+      gap: 0;
+  
+      padding: 0.35rem 0 0.5rem;
+    }
+  
+    .navigation-links li {
+      position: relative;
+    }
+  
+  
+    /*
+      Draw separators between mobile navigation links without adding a border
+      beneath the final link.
+    */
+  
+    .navigation-links li:not(:last-child)::after {
+      content: "";
+  
+      position: absolute;
+  
+      right: 1rem;
+      bottom: 0;
+      left: 1rem;
+  
+      height: 1px;
+  
+      background: rgb(255 255 255 / 0.12);
+  
+      pointer-events: none;
+    }
+  
+    .navigation-links a {
+      display: flex;
+  
+      min-height: 2.75rem;
+  
+      align-items: center;
+  
+      padding: 0.6rem 1rem;
+  
+      border-bottom: 0;
+  
+      font-size: 1.1rem;
+      line-height: 1.2;
+    }
+  }
+  
+  
+  /* ==========================================================================
+     Very Narrow Screens
+     ========================================================================== */
+  
+  /*
+    The subtitle is retained on typical phones.
+  
+    Only unusually narrow screens remove it so the name and hamburger button
+    cannot compete for insufficient horizontal space.
+  */
+  
+  @media (max-width: 23rem) {
+    .brand-subtitle {
+      display: none;
+    }
+  }
+  
+  
+  /* ==========================================================================
+     Mobile Navigation Animations
+     ========================================================================== */
+  
+  @keyframes navigation-drawer-open {
+    from {
+      opacity: 0;
+  
+      transform: translateX(1rem);
+    }
+  
+    to {
+      opacity: 1;
+  
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes navigation-backdrop-open {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @media (max-width: 59.99rem) {
+  
+    .site-navigation[data-open="true"] {
+      animation: navigation-drawer-open 160ms ease-out;
+    }
+  
+    .navigation-backdrop:not([hidden]) {
+      animation: navigation-backdrop-open 160ms ease-out;
+    }
+  }
+  
+  
+  /* ==========================================================================
+     Desktop Navigation
+     ========================================================================== */
+  
+  /*
+    Switch to horizontal navigation only when there is enough room for the full
+    two-line branding and all navigation links to fit comfortably.
+  */
+  
+  @media (min-width: 60rem) {
+  
+    .brand-logo {
+      height: 2.1rem;
+  
+      transform: scale(1.3);
+    }
+  
+    .navigation-inner {
+      display: flex;
+  
+      justify-content: space-between;
+      gap: 2rem;
+  
+      min-height: 0;
+  
+      padding-top: 0;
+      padding-bottom: 0.1rem;
+    }
+  
+    .navigation-toggle,
+    .js .navigation-toggle {
+      display: none;
+    }
+  
+    .site-navigation,
+    .js .site-navigation,
+    .js .site-navigation[data-open="true"] {
+      display: block;
+    }
+  
+    .navigation-links {
+      flex-direction: row;
+  
+      align-items: center;
+      gap: 2rem;
+  
+      padding: 0;
+    }
+  
+    .navigation-links a {
+      padding: 0.7rem 0;
+  
+      border-bottom: 0;
+  
+      white-space: nowrap;
+    }
+  }
+  
+  
+  /* ==========================================================================
+     Reduced Motion
+     ========================================================================== */
+  
+  /*
+    Movement-based effects are disabled for users who request reduced motion.
+  
+    The branding still communicates interactivity through a static aqua/glow
+    state, so accessibility does not require sacrificing visual feedback.
+  */
+  
+  @media (prefers-reduced-motion: reduce) {
+  
+    .site-navigation,
+    .navigation-backdrop {
+      animation: none !important;
+    }
+  
+    .branding:hover .brand-subtitle,
+    .branding:focus-visible .brand-subtitle {
+      background: none;
+  
+      color: var(--color-accent);
+  
+      -webkit-text-fill-color: var(--color-accent);
+  
+      animation: none !important;
+  
+      text-shadow:
+        0 0 2px var(--brand-glow),
+        0 0 10px var(--brand-glow-soft);
+    }
+  }

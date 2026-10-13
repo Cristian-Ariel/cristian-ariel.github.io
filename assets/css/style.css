@@ -1,0 +1,13 @@
+/*
+  Main stylesheet entry point.
+  Keep this file imports-only so responsibilities stay easy to find.
+*/
+@import "base.css";
+@import "layout.css";
+@import "navigation.css";
+@import "components.css";
+@import "pages/home.css";
+@import "pages/projects.css";
+@import "pages/art.css";
+@import "pages/about.css";
+@import "pages/contact.css";

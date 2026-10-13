@@ -1,0 +1,97 @@
+/* ==========================================================================
+   About Page
+   ========================================================================== */
+
+   .container.about-page {
+    max-width: 40rem;
+    margin-inline: auto;
+  }
+  
+  .about-section {
+    padding-top: 1.5rem;
+  }
+  
+  .about-page > h1 {    /* Actual about page title. */
+    margin: 0 0 2rem;
+  
+    font-size: 2.2rem;
+    line-height: 1.1;
+    text-align: left;
+  }
+  
+  
+  /* ----- About Photos ----------------------------------------------------- */
+
+.about-photo-figure {
+  float: left;
+
+  width: min(36vw, 15rem);
+
+  margin:
+    0.4rem
+    0.8rem
+    0.2rem
+    0rem;
+}
+
+.about-photo-figure--right {
+  float: right;
+
+  margin:
+    0rem
+    0
+    0rem
+    0.6rem;
+}
+
+.about-photo {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  border-radius: 0.75rem;
+}
+
+.about-photo__caption {
+  margin-top: 0.35rem;
+
+  color: var(--color-muted);
+
+  font-size: 0.85rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+@media (max-width: 40rem) {
+  .about-photo-figure {
+    width: min(42vw, 11rem);
+
+    margin:
+    0.3rem
+    0.8rem
+    0.2rem
+    0rem;
+  }
+
+  .about-photo-figure--right {
+    margin:
+    0rem
+    0
+    0rem
+    0.6rem;
+  }
+}
+  
+  
+  /* ----- Poetry Quote ----------------------------------------------------- */
+  
+  .poetry-quote {
+    width: min(100%, 40rem);
+  
+    margin: 1rem auto;
+  
+    text-align: center;
+    font-style: italic;
+    line-height: 1.7;
+  }

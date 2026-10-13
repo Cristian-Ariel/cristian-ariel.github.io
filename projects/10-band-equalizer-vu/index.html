@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <meta name="color-scheme" content="light">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="/assets/icons/site-favicon.png"
+  >
+
+  <meta
+    name="description"
+    content="An analog equalizer with ten active band-pass filters, independent input and output gain controls, bypass feature, and dual LED VU meters.
+"
+  >
+
+  <title>
+    10-Band Audio Equalizer with Dual VU Meters | Cristian A. Guzman
+  </title>
+
+  <script>
+    document.documentElement.classList.add("js");
+  </script>
+
+  <link
+    rel="stylesheet"
+    href="/assets/css/style.css"
+  >
+</head>
+
+
+<body>
+
+  <a
+    class="skip-link"
+    href="#main-content"
+  >
+    Skip to content
+  </a>
+
+
+  <div class="site-frame">
+
+    <header class="site-header">
+  <div class="navigation-inner container">
+
+    <a class="branding" href="/" aria-label="Cristian A. Guzman homepage">
+  <svg class="brand-logo" aria-hidden="true">
+    <use href="/assets/images/global/logo-nav-bar-plain.svg#logo-navigation-bar"></use>
+  </svg>
+
+  <span class="brand-text">
+    <span class="brand-name">Cristian A. Guzman</span>
+    <span class="brand-subtitle">
+      Electrical &amp; Mechatronic Engineering
+    </span>
+  </span>
+</a>
+
+    <button
+      class="navigation-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="primary-navigation"
+      aria-label="Open navigation menu"
+      data-navigation-toggle>
+      <span class="navigation-toggle-icon" aria-hidden="true"></span>
+    </button>
+
+    <nav
+      id="primary-navigation"
+      class="site-navigation"
+      aria-label="Primary navigation"
+      data-navigation
+      data-open="false">
+      <ul class="navigation-links">
+        <li>
+          <a href="/">
+            Home
+          </a>
+        </li>
+
+        <li>
+          <a href="/projects/" aria-current="page">
+            Engineering Projects
+          </a>
+        </li>
+
+        <li>
+          <a href="/art/">
+            Art
+          </a>
+        </li>
+
+        <li>
+          <a href="/about/">
+            About
+          </a>
+        </li>
+
+        <li>
+          <a href="/contact/">
+            Contact
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<button
+  class="navigation-backdrop"
+  type="button"
+  aria-label="Close navigation menu"
+  data-navigation-backdrop
+  hidden>
+</button>
+
+
+    <main id="main-content">
+      
+<article class="container section">
+
+  <div class="project-page">
+
+    <header class="project-header">
+
+      <h1 class="project-header__title">
+        10-Band Audio Equalizer with Dual VU Meters
+      </h1>
+
+      <p class="project-header__date">
+        July 2026
+      </p>
+
+      <p class="project-header__summary">
+        An analog equalizer with ten active band-pass filters, independent input and output gain controls, bypass feature, and dual LED VU meters.
+
+      </p>
+
+    </header>
+
+
+    <figure class="project-hero">
+      <img
+        src="/projects/10-band-equalizer-vu/figures/10-band-equalizer-vu-hero.gif"
+        alt="10-Band Audio Equalizer with Dual VU Meters"
+        class="project-hero__image"
+        decoding="async"
+        fetchpriority="high"
+        data-lightbox-standalone
+      >
+    </figure>
+
+
+    
+
+
+    <div class="prose project-body">
+      <h2>Overview</h2>
+<p>This project is a fully analog 10-band audio equalizer, a device that allows specific audio frequency ranges to be boosted or attenuated to shape the sound of an audio signal.</p>
+<p>Ten band-pass filters provide independent ±12 dB band controls, while separate input and output gain stages provide additional signal-level adjustment.
+A DPDT relay allows the equalizer to be bypassed for direct comparison between the original and equalized signals. Two 10-segment LED <a href="https://en.wikipedia.org/wiki/VU_meter" target="_blank" rel="noopener noreferrer">VU meters</a> monitor the input and post-EQ output levels and can be switched off independently.</p>
+<p>The following video demonstrates the completed audio equalizer:</p>
+<div class="project-video">
+  <iframe
+    src="https://www.youtube.com/embed/gZ3LIAYS8e0"
+    title="10 Band Audio Equalizer with VU Meters Demo and Animation"
+    loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+  </iframe>
+</div>
+<p>A custom 3D-printed enclosure houses the electronics, controls, connectors, and LED VU Meters.</p>
+<p>The project combines analog circuit design, LTspice simulation, PCB design, hardware testing, CAD modeling, and 3D printing.</p>
+<h2>System Overview</h2>
+<p>The high-level design for this device is shown in the block diagram below. The system consists of the audio equalizer board, the VU Meters board, the audio connectors and switches.</p>
+<figure class="project-figure">
+<img src="/projects/10-band-equalizer-vu/figures/eq-block-diagram.png" alt="High-level block diagram showing how all the hardware components interact with the EQ board." class="project-figure__image" loading="lazy" decoding="async" data-lightbox-standalone>
+<figcaption class="project-figure__caption">Block diagram showing the hardware components and signal paths for the EQ system, mainly the Equalizer and VU Meter board.</figcaption>
+</figure>
+<p>The figure below describes the audio signal path through the main analog filter circuit. The audio input signal first passes through an op-amp gain stage that allows the input signal level to be adjusted while also providing a high-impedance buffer for the audio source.</p>
+<p>The buffered signal is then distributed across ten band-pass filters. Each filter output passes through an independently adjustable gain stage before all ten bands are recombined by a unity-gain summing amplifier.</p>
+<figure class="project-figure">
+<img src="/projects/10-band-equalizer-vu/figures/bandpass-filter-diagram.jpg" alt="High-level diagram showing the bandpass filter connections for the audio equalizer." class="project-figure__image" loading="lazy" decoding="async" data-lightbox-standalone>
+<figcaption class="project-figure__caption">High-level diagram showing the 10 bandpass filter connections and the input and output gain controls.</figcaption>
+</figure>
+<p>The summed signal then passes through a final op-amp stage that provides overall output gain control. The output can then be connected to an external audio amplifier and speakers.</p>
+<p>A DPDT (double-pole, double-throw) relay allows the equalizer to be bypassed from the front panel, making it easy to compare the original input signal with the equalized output.</p>
+<figure class="project-figure">
+<img src="/projects/10-band-equalizer-vu/figures/bypass-relay-diagram.png" alt="Diagram showing the bypass circuit and connections to the VU meters." class="project-figure__image" loading="lazy" decoding="async" data-lightbox-standalone>
+<figcaption class="project-figure__caption">Diagram showing the bypass circuit connections using a DPDT relay as well as the connections to the VU meters.</figcaption>
+</figure>
+<p>The same system also connects to a dual VU-meter board, which monitors the raw audio input and the post-EQ output signal. The VU-meter board can be switched off independently from the front panel.</p>
+<h2>Filter Design and Circuit Simulation</h2>
+<p>The ten band-pass filters were designed using the multiple feedback (MFB) topology, which was selected for its low component count and moderate sensitivity to component tolerances.</p>
+<figure class="project-figure">
+<img src="/projects/10-band-equalizer-vu/figures/MFB-topology.png" alt="Circuit topology for a multiple feedback (MFB) band pass filter." class="project-figure__image" loading="lazy" decoding="async" data-lightbox-standalone>
+<figcaption class="project-figure__caption">Circuit topology for a multiple feedback (MFB) band pass filter.</figcaption>
+</figure>
+<p>The filters use octave-spaced center frequencies ranging from 31.25 Hz to 16 kHz. Together, the filter bank covers approximately the 20 Hz to 20 kHz audio range.</p>
+<p>A quality factor of approximately Q = 1.414 was selected to provide moderate selectivity while allowing adjacent octave-spaced bands to intersect near their -3 dB frequencies.
+Each band includes an independently adjustable ±12 dB gain stage. Separate input and output gain-control stages provide additional signal-level adjustment before and after the filter bank.</p>
+<div class="project-gallery" data-gallery>
+<div class="project-gallery__viewport">
+<figure class="project-gallery__item" data-gallery-item>
+<img src="/projects/10-band-equalizer-vu/figures/summer-ltspice-bode-plot.png" alt="Bode plot showing the frequency response for each of the 10 band pass filters as well as the summing amplifier output simulated in LTspice." class="project-gallery__image" loading="lazy" decoding="async" data-lightbox-image>
+<figcaption class="project-gallery__caption">Bode plot showing the frequency response for each of the 10 band pass filters as well as the summing amplifier output simulated in LTspice. All filter gain controls were set to 0 dB.</figcaption>
+</figure>
+<figure class="project-gallery__item" data-gallery-item>
+<img src="/projects/10-band-equalizer-vu/figures/bode-plot-boost.png" alt="Bode plot showing the frequency response for each of the 10 band pass filters as well as the summing amplifier output simulated in LTspice with the 125 Hz filter (cyan trace) being boosted by +12 dB." class="project-gallery__image" loading="lazy" decoding="async" data-lightbox-image>
+<figcaption class="project-gallery__caption">Bode plot showing the frequency response for each of the 10 band pass filters as well as the summing amplifier output simulated in LTspice. In this case, the 125 Hz filter (cyan trace) is being boosted by +12 dB, which is the maximum allowed gain set by the slide potentiometers.</figcaption>
+</figure>
+<figure class="project-gallery__item" data-gallery-item>
+<img src="/projects/10-band-equalizer-vu/figures/bode-plot-attenuation.png" alt="Bode plot showing the frequency response for each of the 10 band pass filters as well as the summing amplifier output simulated in LTspice with the 4 kHz filter (yellow trace) being attenuated by -12 dB." class="project-gallery__image" loading="lazy" decoding="async" data-lightbox-image>
+<figcaption class="project-gallery__caption">Bode plot showing the frequency response for each of the 10 band pass filters as well as the summing amplifier output simulated in LTspice. In this case, the 4 kHz filter (yellow trace) is being attenuated by -12 dB, which is the minimum allowed gain set by the slide potentiometers.</figcaption>
+</figure>
+<div class="project-gallery__controls" data-gallery-controls hidden>
+<button class="project-gallery__button project-gallery__button--previous" type="button" data-gallery-previous aria-label="Show previous image"></button>
+<span class="project-gallery__counter" data-gallery-counter aria-live="polite"></span>
+<button class="project-gallery__button project-gallery__button--next" type="button" data-gallery-next aria-label="Show next image"></button>
+</div>
+</div>
+</div>
+<p>The complete circuit was simulated in LTspice, the Bode plots were used to verify the center frequency and frequency response of each band before the circuit was physically built as shown in the images above.</p>
+<h2>The Dual VU Meter</h2>
+<p>The VU-meter circuit was implemented on a separate PCB using two LM3916 LED display drivers. One channel monitors the raw audio input while the second monitors the post-EQ output.</p>
+<figure class="project-figure">
+<img src="/projects/10-band-equalizer-vu/figures/vu-schematic.jpg" alt="KiCad schematic for a single VU meter gain control and circuit driver." class="project-figure__image" loading="lazy" decoding="async" data-lightbox-standalone>
+<figcaption class="project-figure__caption">KiCad schematic for a single VU meter gain control and circuit driver.</figcaption>
+</figure>
+<p>As shown in the schematic above, each channel includes an op-amp input stage that buffers the monitored signal and allows the sensitivity of the VU meter to be adjusted independently. The VU meter board can also be switched off independently without affecting the operation of the audio equalizer.</p>
+<h2>PCB Design</h2>
+<p>The PCBs for both the audio equalizer and VU meters were designed in KiCad.
+The main equalizer PCB contains more than 150 components and uses several Molex KK 254 connectors for power, external controls, and the slide potentiometers mounted on the enclosure.</p>
+<figure class="model-viewer-figure">
+  <div
+    class="model-viewer-wrapper"
+    data-model-viewer
+    aria-busy="true">
+<p><model-viewer
+      class="model-viewer"
+      src="/assets/projects/equalizer/models/equalizer-PCB.glb"
+      alt="Interactive 3D model of the audio equalizer PCB."
+      loading="lazy"
+      camera-controls
+      disable-pan
+      auto-rotate
+      rotation-per-second="-18deg"
+      camera-orbit="auto auto 70%"
+      tone-mapping="neutral"
+      shadow-intensity="2"
+      shadow-softness="1"
+      exposure="0.5"
+      touch-action="none">
+</model-viewer></p>
+<p><p
+      class="model-viewer-loading"
+      data-model-viewer-loading
+      role="status">
+Loading 3D model…
+</p></p>
+<p><p
+      class="model-viewer-hint"
+      data-model-viewer-hint
+      hidden>
+Drag to rotate • Scroll or pinch to zoom
+</p></p>
+<p><button
+      class="model-viewer-expand"
+      type="button"
+      data-model-viewer-expand
+      hidden>
+Expand view
+</button></p>
+<p><button
+      class="model-viewer-reset"
+      type="button"
+      data-model-viewer-reset
+      hidden>
+Reset view
+</button></p>
+  </div>
+<p><figcaption class="model-viewer-caption">
+Interactive 3D model of the audio equalizer PCB.
+</figcaption></p>
+</figure>
+<p>If you're curious, the PCB shape is supposed to resemble a wildcat (my alma mater's <a href="https://www.csuchico.edu/traditions/wildcat.shtml" target="_blank" rel="noopener noreferrer">mascot</a>). Unfortunately, my drawing skills (yes, I had to draw this by hand) are laughable to say the least, but hey, it works :D</p>
+<div class="project-gallery" data-gallery>
+<div class="project-gallery__viewport">
+<figure class="project-gallery__item" data-gallery-item>
+<img src="/projects/10-band-equalizer-vu/figures/main-pcb-front.jpg" alt="Front view of the main equalizer PCB populated with all the components." class="project-gallery__image" loading="lazy" decoding="async" data-lightbox-image>
+<figcaption class="project-gallery__caption">Front view of the main equalizer PCB populated with all the components.</figcaption>
+</figure>
+<figure class="project-gallery__item" data-gallery-item>
+<img src="/projects/10-band-equalizer-vu/figures/main-pcb-back.jpg" alt="Back view of the main equalizer PCB populated with all the components." class="project-gallery__image" loading="lazy" decoding="async" data-lightbox-image>
+<figcaption class="project-gallery__caption">Back view of the main equalizer PCB populated with all the components.</figcaption>
+</figure>
+<div class="project-gallery__controls" data-gallery-controls hidden>
+<button class="project-gallery__button project-gallery__button--previous" type="button" data-gallery-previous aria-label="Show previous image"></button>
+<span class="project-gallery__counter" data-gallery-counter aria-live="polite"></span>
+<button class="project-gallery__button project-gallery__button--next" type="button" data-gallery-next aria-label="Show next image"></button>
+</div>
+</div>
+</div>
+<p>The VU-meter PCB was designed as a separate module so that the LEDs could be positioned directly behind the front panel. This also keeps the design modular, since the audio equalizer can operate without the VU meter board installed.</p>
+<figure class="model-viewer-figure">
+  <div
+    class="model-viewer-wrapper"
+    data-model-viewer
+    aria-busy="true">
+<p><model-viewer
+      class="model-viewer"
+      src="/assets/projects/equalizer/models/vu-meter-PCB.glb"
+      alt="Interactive 3D model of the dual VU meter PCB."
+      loading="lazy"
+      camera-controls
+      disable-pan
+      auto-rotate
+      rotation-per-second="-18deg"
+      camera-orbit="auto auto 70%"
+      tone-mapping="neutral"
+      shadow-intensity="2"
+      shadow-softness="1"
+      exposure="0.5"
+      touch-action="none">
+</model-viewer></p>
+<p><p
+      class="model-viewer-loading"
+      data-model-viewer-loading
+      role="status">
+Loading 3D model…
+</p></p>
+<p><p
+      class="model-viewer-hint"
+      data-model-viewer-hint
+      hidden>
+Drag to rotate • Scroll or pinch to zoom
+</p></p>
+<p><button
+      class="model-viewer-expand"
+      type="button"
+      data-model-viewer-expand
+      hidden>
+Expand view
+</button></p>
+<p><button
+      class="model-viewer-reset"
+      type="button"
+      data-model-viewer-reset
+      hidden>
+Reset view
+</button></p>
+  </div>
+<p><figcaption class="model-viewer-caption">
+Interactive 3D model of the dual VU meter PCB.
+</figcaption></p>
+</figure>
+<p>As seen in the image below, each row of ten LEDs corresponds to one VU meter channel. Before installation, the sensitivity of each VU-meter channel was adjusted using the onboard trimmer potentiometers (the blue components shown in the image) to calibrate the meters for their respective signal levels.</p>
+<div class="project-gallery" data-gallery>
+<div class="project-gallery__viewport">
+<figure class="project-gallery__item" data-gallery-item>
+<img src="/projects/10-band-equalizer-vu/figures/vu-pcb-back.jpg" alt="Back view of the Dual VU Meter PCB populated with all the components." class="project-gallery__image" loading="lazy" decoding="async" data-lightbox-image>
+<figcaption class="project-gallery__caption">Back view of the Dual VU Meter PCB populated with all the components</figcaption>
+</figure>
+<figure class="project-gallery__item" data-gallery-item>
+<img src="/projects/10-band-equalizer-vu/figures/vu-pcb-front.jpg" alt="Front view of the Dual VU Meter PCB populated with all the components." class="project-gallery__image" loading="lazy" decoding="async" data-lightbox-image>
+<figcaption class="project-gallery__caption">Front view of the Dual VU Meter PCB populated with all the components.</figcaption>
+</figure>
+<div class="project-gallery__controls" data-gallery-controls hidden>
+<button class="project-gallery__button project-gallery__button--previous" type="button" data-gallery-previous aria-label="Show previous image"></button>
+<span class="project-gallery__counter" data-gallery-counter aria-live="polite"></span>
+<button class="project-gallery__button project-gallery__button--next" type="button" data-gallery-next aria-label="Show next image"></button>
+</div>
+</div>
+</div>
+<h2>3D Design and Assembly</h2>
+<p>A custom three-piece enclosure was designed in SolidWorks to house and protect the circuit boards, switches, audio connectors, LED displays, and slide potentiometers.
+Custom slider knobs were also designed for the potentiometers. The enclosure went through several design iterations to verify component fit, alignment, accessibility, and ease of assembly.</p>
+<figure class="model-viewer-figure">
+  <div
+    class="model-viewer-wrapper"
+    data-model-viewer
+    aria-busy="true">
+<p><model-viewer
+      class="model-viewer"
+      src="/assets/projects/equalizer/models/equalizer-assembly.glb"
+      alt="Interactive SolidWorks 3D model of the audio equalizer assembly."
+      loading="lazy"
+      camera-controls
+      disable-pan
+      auto-rotate
+      rotation-per-second="-18deg"
+      camera-orbit="-0.794927592186848rad 0.9654266635086859rad 0.5619190197395597m"
+      camera-target="0m 0.030m -0.0010021291673467658m"
+      field-of-view="26.57057811299352deg"
+      tone-mapping="neutral"
+      shadow-intensity="2"
+      shadow-softness="1"
+      exposure="0.5"
+      touch-action="none">
+</model-viewer></p>
+<p><p
+      class="model-viewer-loading"
+      data-model-viewer-loading
+      role="status">
+Loading 3D model…
+</p></p>
+<p><p
+      class="model-viewer-hint"
+      data-model-viewer-hint
+      hidden>
+Drag to rotate • Scroll or pinch to zoom
+</p></p>
+<p><button
+      class="model-viewer-expand"
+      type="button"
+      data-model-viewer-expand
+      hidden>
+Expand view
+</button></p>
+<p><button
+      class="model-viewer-reset"
+      type="button"
+      data-model-viewer-reset
+      hidden>
+Reset view
+</button></p>
+  </div>
+<p><figcaption class="model-viewer-caption">
+Interactive 3D model of the audio equalizer assembly designed in SolidWorks.
+</figcaption></p>
+</figure>
+<p>All enclosure components were 3D printed and assembled with the completed electronics. For a rendered view of the complete CAD assembly, watch the assembly <a href="https://youtu.be/y0i0SPF3T7M" target="_blank" rel="noopener noreferrer">animation here</a>.</p>
+<h2>Results</h2>
+<p>The completed equalizer successfully provided independent adjustment of all ten frequency bands, along with separate input and output gain control.
+Measured filter responses closely matched the LTspice simulations, with most center frequencies within approximately 1% of their intended design values.</p>
+<figure class="project-figure">
+<img src="/projects/10-band-equalizer-vu/figures/equalize-hand-assembly.gif" alt="Showing step by step the equalizer enclosure assembly and wiring." class="project-figure__image" loading="lazy" decoding="async" data-lightbox-standalone>
+<figcaption class="project-figure__caption">This animation shows the assembly and wiring of the equalizer.</figcaption>
+</figure>
+<p>The DPDT bypass relay allowed direct comparison between the original and equalized signals, while the dual VU meters provided visual indication of the input and post-EQ signal levels.
+The custom 3D-printed enclosure successfully integrated the electronics, controls, connectors, and LED displays into a compact and easy to use final assembly.</p>
+
+    </div>
+
+  </div>
+
+</article>
+
+
+
+
+  <div
+    class="model-viewer-lightbox"
+    data-model-viewer-lightbox
+    aria-hidden="true"
+    hidden>
+
+    <div
+      class="model-viewer-lightbox__backdrop"
+      data-model-viewer-lightbox-backdrop>
+    </div>
+
+    <div
+      class="model-viewer-lightbox__content"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Expanded 3D model viewer"
+      tabindex="-1">
+
+      <button
+        class="model-viewer-lightbox__close"
+        type="button"
+        data-model-viewer-lightbox-close
+        aria-label="Close expanded 3D model">
+      </button>
+
+      <div
+        class="model-viewer-lightbox__stage"
+        data-model-viewer-lightbox-stage>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script
+    type="module"
+    src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js">
+  </script>
+
+  <script
+    type="module"
+    src="/assets/js/model-viewer.js">
+  </script>
+
+
+    </main>
+
+
+    
+
+
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-column">
+      <div class="footer-brand-name">Cristian A. Guzman</div>
+
+      <p class="footer-description">
+        Electrical & Mechatronic Engineering
+      </p>
+    </div>
+
+    
+      <div class="footer-column">
+        <h2 class="footer-heading">Connect</h2>
+
+        <ul class="footer-links">
+          
+            <li>
+              <a href="/contact/" data-email-open>Email</a>
+            </li>
+          
+
+          
+            <li>
+              <a href="https://www.linkedin.com/in/cristi4n-guzman/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+            </li>
+          
+
+          
+            <li>
+              <a href="https://github.com/Cristian-Ariel" target="_blank" rel="me noopener noreferrer">GitHub</a>
+            </li>
+          
+        </ul>
+      </div>
+    
+
+    <div class="footer-column">
+      <h2 class="footer-heading">Navigate</h2>
+
+      <ul class="footer-links">
+        <li><a href="/projects/">Engineering Projects</a></li>
+        <li><a href="/art/">Art</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+
+    
+      <div class="footer-quote-container">
+        <p class="quote-text">“Losing emotion 
+Finding devotion 
+Should I dress in white and search the sea 
+As I always wished to be 
+One with the waves 
+Ocean Soul”</p>
+
+        <p class="quote-author">
+          — Nightwish
+        </p>
+      </div>
+    
+
+    <p class="footer-copyright">
+      &copy; 2026 Cristian A. Guzman
+    </p>
+
+  </div>
+</footer>
+
+
+  </div>
+
+
+  <!--
+    Shared project-image lightbox.
+
+    The lightbox is included once at the site-layout level instead of
+    creating a separate lightbox for every project image or gallery.
+
+    JavaScript copies the selected image into this shared lightbox.
+
+    Gallery images can use the Previous / Next controls, while standalone
+    images such as the project hero or individual figures automatically
+    hide those controls.
+
+    The Full Resolution link opens the currently displayed original image
+    in a new browser tab so the browser can provide its native zooming and
+    panning behavior.
+  -->
+
+  <div
+    class="lightbox"
+    data-lightbox
+    hidden
+    aria-hidden="true"
+  >
+
+    <div
+      class="lightbox__backdrop"
+      data-lightbox-close
+    ></div>
+
+
+    <div
+      class="lightbox__content"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Expanded project image"
+    >
+
+      <a
+        class="lightbox__full-resolution"
+        data-lightbox-full-resolution
+        href=""
+        target="_blank"
+        rel="noopener"
+        aria-label="Open full-resolution image in a new tab"
+        hidden
+      >
+        Full resolution
+        <span aria-hidden="true">↗</span>
+      </a>
+
+
+      <button
+        class="lightbox__close"
+        type="button"
+        data-lightbox-close
+        aria-label="Close expanded image"
+      ></button>
+
+
+      <button
+        class="lightbox__button lightbox__button--previous"
+        type="button"
+        data-lightbox-previous
+        aria-label="Show previous image"
+        hidden
+      ></button>
+
+
+      <span
+        class="lightbox__counter"
+        data-lightbox-counter
+        aria-live="polite"
+        hidden
+      ></span>
+
+
+      <button
+        class="lightbox__button lightbox__button--next"
+        type="button"
+        data-lightbox-next
+        aria-label="Show next image"
+        hidden
+      ></button>
+
+
+      <img
+        class="lightbox__image"
+        data-lightbox-expanded-image
+        src=""
+        alt=""
+      >
+
+    </div>
+
+  </div>
+
+  <dialog
+  class="email-modal"
+  data-email-modal
+  aria-labelledby="email-modal-title"
+>
+  <div class="email-modal__panel">
+
+    <button
+      class="email-modal__close"
+      type="button"
+      data-email-close
+      aria-label="Close email window"
+    >
+      ×
+    </button>
+
+    <h2
+      class="email-modal__title"
+      id="email-modal-title"
+    >
+      Email
+    </h2>
+
+    <p class="email-modal__text">
+      You can copy my email address below.
+    </p>
+
+    <div class="email-modal__address-row">
+
+      <span
+        class="email-modal__address"
+        data-email-address
+      ></span>
+
+      <button
+        class="button button--accent email-modal__copy"
+        type="button"
+        data-email-copy
+      >
+        Copy Email
+      </button>
+
+    </div>
+
+    <p
+      class="email-modal__status"
+      data-email-status
+      aria-live="polite"
+    ></p>
+
+  </div>
+</dialog>
+
+  <script
+    src="/assets/js/navigation.js"
+    defer
+  ></script>
+
+  <script
+    src="/assets/js/gallery.js"
+    defer
+  ></script>
+
+    <script
+  src="/assets/js/email-modal.js"
+  defer
+></script>
+
+</body>
+
+</html>
